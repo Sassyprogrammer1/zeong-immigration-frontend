@@ -14,14 +14,21 @@ import {
 
 const initialState = {
   /* Settings for Themes and layout */
-  theme: 'lightBlueTheme',
+  theme: 'blueTheme',
   type: 'light', // light or dark
   direction: 'ltr', // ltr or rtl
-  layout: 'sidebar', // sidebar, big-sidebar, top-navigation, mega-menu
+  layout: 'big-sidebar', // sidebar, big-sidebar, top-navigation, mega-menu
   /* End settings */
   palette: [
+    { name: 'Red', value: 'redTheme' },
+    { name: 'Green', value: 'greenTheme' },
+    { name: 'Blue', value: 'blueTheme' },
+    { name: 'Purple', value: 'purpleTheme' },
+    { name: 'Orange', value: 'orangeTheme' },
     { name: 'Grey', value: 'greyTheme' },
+    { name: 'Green Light', value: 'lightGreenTheme' },
     { name: 'Blue Light', value: 'lightBlueTheme' },
+    { name: 'Brown', value: 'brownTheme' },
   ],
   sidebarOpen: true,
   pageLoaded: false,

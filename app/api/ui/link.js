@@ -10,5 +10,6 @@ module.exports = {
   twitter: '#',
   github: '#',
   pinterest: '#',
-  linkedin: '#'
+  linkedin: '#',
+  buy: '#'
 };

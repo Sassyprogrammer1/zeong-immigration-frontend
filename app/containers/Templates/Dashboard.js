@@ -16,6 +16,7 @@ import styles from './appStyles-jss';
 
 function Dashboard(props) {
   const {
+    initialOpen,
     classes,
     children,
     toggleDrawer,
@@ -62,7 +63,7 @@ function Dashboard(props) {
 
     // Set expanded sidebar menu
     const currentPath = history.location.pathname;
-    props.initialOpen(currentPath);
+    initialOpen(currentPath);
     // Play page transition
     loadTransition(true);
 
