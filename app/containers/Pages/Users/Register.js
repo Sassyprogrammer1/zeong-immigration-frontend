@@ -29,48 +29,49 @@ function Register(props) {
   }, [valueForm]);
 
   return (
-    <div className={classes.rootFull}>
-      <Helmet>
-        <title>{title}</title>
-        <meta name="description" content={description} />
-        <meta property="og:title" content={title} />
-        <meta property="og:description" content={description} />
-        <meta property="twitter:title" content={title} />
-        <meta property="twitter:description" content={description} />
-      </Helmet>
-      <div className={classes.containerSide}>
-        <Hidden smDown>
-          <div className={classes.opening}>
-            <div className={classes.openingWrap}>
-              <div className={classes.openingHead}>
-                <NavLink to="/" className={classes.brand}>
-                  <img src={logo} alt={brand.name} />
-                  {brand.name}
-                </NavLink>
-              </div>
-              <Typography variant="h3" component="h1" className={classes.opening} gutterBottom>
-                <FormattedMessage {...messages.greetingTitle} />
-              </Typography>
-              <Typography variant="h6" component="p" className={classes.subpening}>
-                <FormattedMessage {...messages.greetingSubtitle} />
-              </Typography>
-            </div>
-            <div className={classes.openingFooter}>
-              <NavLink to="/" className={classes.back}>
-                <ArrowBack />
-                &nbsp;back to site
-              </NavLink>
-              <div className={classes.lang}>
-                <SelectLanguage />
-              </div>
-            </div>
-          </div>
-        </Hidden>
-        <div className={classes.sideFormWrap}>
-          <RegisterForm onSubmit={(values) => submitForm(values)} />
-        </div>
-      </div>
+    <div className={classes.sideFormWrap}>
+      <RegisterForm onSubmit={(values) => submitForm(values)} />
     </div>
+    // <div className={classes.rootFull}>
+    //   <Helmet>
+    //     <title>{title}</title>
+    //     <meta name="description" content={description} />
+    //     <meta property="og:title" content={title} />
+    //     <meta property="og:description" content={description} />
+    //     <meta property="twitter:title" content={title} />
+    //     <meta property="twitter:description" content={description} />
+    //   </Helmet>
+    //   <div className={classes.containerSide}>
+    //     <Hidden smDown>
+    //       <div className={classes.opening}>
+    //         <div className={classes.openingWrap}>
+    //           <div className={classes.openingHead}>
+    //             <NavLink to="/" className={classes.brand}>
+    //               <img src={logo} alt={brand.name} />
+    //               {brand.name}
+    //             </NavLink>
+    //           </div>
+    //           <Typography variant="h3" component="h1" className={classes.opening} gutterBottom>
+    //             <FormattedMessage {...messages.greetingTitle} />
+    //           </Typography>
+    //           <Typography variant="h6" component="p" className={classes.subpening}>
+    //             <FormattedMessage {...messages.greetingSubtitle} />
+    //           </Typography>
+    //         </div>
+    //         <div className={classes.openingFooter}>
+    //           <NavLink to="/" className={classes.back}>
+    //             <ArrowBack />
+    //             &nbsp;back to site
+    //           </NavLink>
+    //           <div className={classes.lang}>
+    //             <SelectLanguage />
+    //           </div>
+    //         </div>
+    //       </div>
+    //     </Hidden>
+
+  //   </div>
+  // </div>
   );
 }
 

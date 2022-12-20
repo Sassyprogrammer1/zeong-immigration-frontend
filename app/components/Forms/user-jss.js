@@ -202,9 +202,12 @@ const styles = theme => ({
     },
   },
   sideFormWrap: {
-    height: '100%',
+    height: '80%',
     width: '65%',
     zIndex: 1,
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
     position: 'relative',
     [theme.breakpoints.down('sm')]: {
       width: '100%'

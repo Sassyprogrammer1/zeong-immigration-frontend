@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import classNames from 'classnames';
 import { connect } from 'react-redux';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useHistory } from 'react-router-dom';
 import { Field, reduxForm } from 'redux-form';
 import Button from '@material-ui/core/Button';
 import Hidden from '@material-ui/core/Hidden';
@@ -54,6 +54,8 @@ function RegisterForm(props) {
     closeMsg,
     loading
   } = props;
+
+  const history = useHistory();
 
   return (
     <Paper className={classes.sideWrap}>
@@ -148,7 +150,7 @@ function RegisterForm(props) {
             </a>
           </div>
           <div className={classes.btnArea}>
-            <Button variant="contained" fullWidth disabled={loading} color="primary" type="submit">
+            <Button variant="contained" fullWidth disabled={loading} color="primary" type="submit" onClick={() => history.push('app/dashboard/gender')}>
               {loading && <CircularProgress size={24} className={classes.buttonProgress} />}
               <FormattedMessage {...messages.loginButtonContinue} />
               {!loading && <ArrowForward className={classNames(classes.rightIcon, classes.iconSmall, classes.signArrow)} disabled={submitting || pristine} />}
@@ -156,12 +158,12 @@ function RegisterForm(props) {
           </div>
         </form>
       </section>
-      <h5 className={classes.divider}>
+      {/* <h5 className={classes.divider}>
         <span>
           <FormattedMessage {...messages.registerOr} />
         </span>
-      </h5>
-      <section className={classes.socmedSideLogin}>
+      </h5> */}
+      {/* <section className={classes.socmedSideLogin}>
         <Button
           variant="contained"
           className={classes.redBtn}
@@ -189,7 +191,7 @@ function RegisterForm(props) {
           <i className="ion-logo-github" />
           Github
         </Button>
-      </section>
+      </section> */}
     </Paper>
   );
 }

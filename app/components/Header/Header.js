@@ -46,6 +46,8 @@ function Header(props) {
     avatar,
     intl
   } = props;
+
+  console.log('classes', classes);
   const [open] = useState(false);
   const [fullScreen, setFullScreen] = useState(false);
   const [turnDarker, setTurnDarker] = useState(false);
@@ -149,15 +151,16 @@ function Header(props) {
                 showTitle && classes.fadeOut,
               )}
             >
-              {fullScreen ? (
-                <Tooltip title={intl.formatMessage(messages.fullScreen)} placement="bottom">
-                  <IconButton
-                    className={classes.button}
-                    onClick={closeFullScreen}
-                  >
-                    <FullscreenExitOutlined />
-                  </IconButton>
-                </Tooltip>
+              {/* {fullScreen ? (
+                <></>
+                // <Tooltip title={intl.formatMessage(messages.fullScreen)} placement="bottom">
+                //   <IconButton
+                //     className={classes.button}
+                //     onClick={closeFullScreen}
+                //   >
+                //     <FullscreenExitOutlined />
+                //   </IconButton>
+                // </Tooltip>
               ) : (
                 <Tooltip title={intl.formatMessage(messages.exitFullScreen)} placement="bottom">
                   <IconButton
@@ -167,8 +170,8 @@ function Header(props) {
                     <FullscreenOutlined />
                   </IconButton>
                 </Tooltip>
-              )}
-              <Tooltip title={intl.formatMessage(messages.lamp)} placement="bottom">
+              )} */}
+              {/* <Tooltip title={intl.formatMessage(messages.lamp)} placement="bottom">
                 <IconButton
                   className={classes.button}
                   onClick={() => turnMode(mode)}
@@ -180,7 +183,7 @@ function Header(props) {
                 <IconButton className={classes.button} onClick={openGuide}>
                   <HelpOutlineOutlined />
                 </IconButton>
-              </Tooltip>
+              </Tooltip> */}
             </div>
             <Typography
               component="h2"
@@ -223,7 +226,7 @@ function Header(props) {
           }
         </div>
       </Toolbar>
-    </AppBar>
+    </AppBar >
   );
 }
 

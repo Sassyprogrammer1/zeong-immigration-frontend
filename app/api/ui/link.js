@@ -1,7 +1,7 @@
 module.exports = {
   dashboard: '/app',
-  login: '/login-firebase',
-  register: '/register-firebase',
+  login: '/login',
+  register: '/register',
   market: '#',
   task: '/app/pages/task',
   profile: '/app/pages/user-profile',
