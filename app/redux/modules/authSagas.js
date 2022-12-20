@@ -29,7 +29,7 @@ import {
 
 function getUrlVars() {
   const vars = {};
-  const parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) { // eslint-disable-line
+  const parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function (m, key, value) { // eslint-disable-line
     vars[key] = value;
   });
   return vars;

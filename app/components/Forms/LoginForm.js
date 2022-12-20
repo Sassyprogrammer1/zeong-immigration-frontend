@@ -141,7 +141,7 @@ function LoginForm(props) {
             </Button>
           </div>
           <div className={classes.btnArea}>
-            <Button variant="contained" disabled={loading} fullWidth color="primary" size="large" type="submit" onClick={() => history.push('/app/dashboard/gender')}>
+            <Button variant="contained" disabled={loading} fullWidth color="primary" size="large" type="submit" >
               {loading && <CircularProgress size={24} className={classes.buttonProgress} />}
               <FormattedMessage {...messages.loginButtonContinue} />
               {!loading && <ArrowForward className={classNames(classes.rightIcon, classes.iconSmall, classes.signArrow)} disabled={submitting || pristine} />}
