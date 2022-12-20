@@ -11,7 +11,9 @@ import brand from 'enl-api/dummy/brand';
 import logo from 'enl-images/logo.svg';
 import ArrowBack from '@material-ui/icons/ArrowBack';
 import { FormattedMessage } from 'react-intl';
+import { useDispatch } from 'react-redux';
 import messages from './messages';
+import { registerWithEmail } from '../../../redux/actions/authActions';
 
 function Register(props) {
   const { classes } = props;
@@ -20,11 +22,12 @@ function Register(props) {
   const [valueForm, setValueForm] = useState(null);
 
   const submitForm = (values) => setValueForm(values);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     if (valueForm) {
-      console.log(`You submitted:\n\n${valueForm.email}`); // eslint-disable-line
-      window.location.href = '/app';
+      const { email, password } = valueForm;
+      const data = dispatch(registerWithEmail(email, password));
     }
   }, [valueForm]);
 
@@ -32,46 +35,7 @@ function Register(props) {
     <div className={classes.sideFormWrap}>
       <RegisterForm onSubmit={(values) => submitForm(values)} />
     </div>
-    // <div className={classes.rootFull}>
-    //   <Helmet>
-    //     <title>{title}</title>
-    //     <meta name="description" content={description} />
-    //     <meta property="og:title" content={title} />
-    //     <meta property="og:description" content={description} />
-    //     <meta property="twitter:title" content={title} />
-    //     <meta property="twitter:description" content={description} />
-    //   </Helmet>
-    //   <div className={classes.containerSide}>
-    //     <Hidden smDown>
-    //       <div className={classes.opening}>
-    //         <div className={classes.openingWrap}>
-    //           <div className={classes.openingHead}>
-    //             <NavLink to="/" className={classes.brand}>
-    //               <img src={logo} alt={brand.name} />
-    //               {brand.name}
-    //             </NavLink>
-    //           </div>
-    //           <Typography variant="h3" component="h1" className={classes.opening} gutterBottom>
-    //             <FormattedMessage {...messages.greetingTitle} />
-    //           </Typography>
-    //           <Typography variant="h6" component="p" className={classes.subpening}>
-    //             <FormattedMessage {...messages.greetingSubtitle} />
-    //           </Typography>
-    //         </div>
-    //         <div className={classes.openingFooter}>
-    //           <NavLink to="/" className={classes.back}>
-    //             <ArrowBack />
-    //             &nbsp;back to site
-    //           </NavLink>
-    //           <div className={classes.lang}>
-    //             <SelectLanguage />
-    //           </div>
-    //         </div>
-    //       </div>
-    //     </Hidden>
 
-  //   </div>
-  // </div>
   );
 }
 

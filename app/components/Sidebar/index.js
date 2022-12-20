@@ -18,7 +18,7 @@ function Sidebar(props) {
     dataMenu,
     userAttr
   } = props;
-  console.log({ dataMenu });
+
   const [status, setStatus] = useState(dummy.user.status);
   const [anchorEl, setAnchorEl] = useState(null);
 

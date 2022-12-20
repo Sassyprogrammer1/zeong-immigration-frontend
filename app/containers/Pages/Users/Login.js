@@ -11,7 +11,9 @@ import logo from 'enl-images/logo.svg';
 import ArrowBack from '@material-ui/icons/ArrowBack';
 import styles from 'enl-components/Forms/user-jss';
 import { FormattedMessage } from 'react-intl';
+import { useDispatch } from 'react-redux';
 import messages from './messages';
+import { loginWithEmail } from '../../../redux/actions/authActions';
 
 function Login(props) {
   const { classes } = props;
@@ -20,11 +22,12 @@ function Login(props) {
   const [valueForm, setValueForm] = useState(null);
 
   const submitForm = (values) => setValueForm(values);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     if (valueForm) {
-      console.log(`You submitted:\n\n${valueForm.email}`);
-      window.location.href = '/app/dashboard/gender';
+      const { email, password } = valueForm;
+      dispatch(loginWithEmail(email, password));
     }
   }, [valueForm]);
 
@@ -33,48 +36,7 @@ function Login(props) {
     <div className={classes.sideFormWrap}>
       <LoginForm onSubmit={(values) => submitForm(values)} />
     </div>
-    // <div className={classes.rootFull}>
-    //   <Helmet>
-    //     <title>{title}</title>
-    //     <meta name="description" content={description} />
-    //     <meta property="og:title" content={title} />
-    //     <meta property="og:description" content={description} />
-    //     <meta property="twitter:title" content={title} />
-    //     <meta property="twitter:description" content={description} />
-    //   </Helmet>
-    //   {/* <div className={classes.containerSide}> */}
-    //   {/* <Hidden smDown>
-    //       <div className={classes.opening}>
-    //         <div className={classes.openingWrap}>
-    //           <div className={classes.openingHead}>
-    //             <NavLink to="/" className={classes.brand}>
-    //               <img src={logo} alt={brand.name} />
-    //               {brand.name}
-    //             </NavLink>
-    //           </div>
-    //           <Typography variant="h3" component="h1" gutterBottom>
-    //             <FormattedMessage {...messages.welcomeTitle} />
-    //             &nbsp;
-    //             {brand.name}
-    //           </Typography>
-    //           <Typography variant="h6" component="p" className={classes.subpening}>
-    //             <FormattedMessage {...messages.welcomeSubtitle} />
-    //           </Typography>
-    //         </div>
-    //         <div className={classes.openingFooter}>
-    //           <NavLink to="/" className={classes.back}>
-    //             <ArrowBack />
-    //             &nbsp;back to site
-    //           </NavLink>
-    //           <div className={classes.lang}>
-    //             <SelectLanguage />
-    //           </div>
-    //         </div>
-    //       </div>
-    //     </Hidden> */}
 
-  //   {/* </div> */}
-  // </div>
   );
 }
 

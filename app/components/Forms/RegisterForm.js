@@ -90,18 +90,7 @@ function RegisterForm(props) {
       }
       <section>
         <form onSubmit={handleSubmit}>
-          <div>
-            <FormControl className={classes.formControl}>
-              <Field
-                name="name"
-                component={TextFieldRedux}
-                placeholder={intl.formatMessage(messages.loginFieldName)}
-                label={intl.formatMessage(messages.loginFieldName)}
-                required
-                className={classes.field}
-              />
-            </FormControl>
-          </div>
+
           <div>
             <FormControl className={classes.formControl}>
               <Field
@@ -115,34 +104,34 @@ function RegisterForm(props) {
               />
             </FormControl>
           </div>
-          <Grid container spacing={3}>
-            <Grid item xs={12} sm={6}>
-              <FormControl className={classes.formControl}>
-                <Field
-                  name="password"
-                  component={TextFieldRedux}
-                  type="password"
-                  label={intl.formatMessage(messages.loginFieldPassword)}
-                  required
-                  validate={[required, passwordsMatch]}
-                  className={classes.field}
-                />
-              </FormControl>
-            </Grid>
-            <Grid item xs={12} sm={6}>
-              <FormControl className={classes.formControl}>
-                <Field
-                  name="passwordConfirm"
-                  component={TextFieldRedux}
-                  type="password"
-                  label={intl.formatMessage(messages.loginFieldRetypePassword)}
-                  required
-                  validate={[required, passwordsMatch]}
-                  className={classes.field}
-                />
-              </FormControl>
-            </Grid>
-          </Grid>
+          <div>
+            <FormControl className={classes.formControl}>
+              <Field
+                name="password"
+                component={TextFieldRedux}
+                type="password"
+                label={intl.formatMessage(messages.loginFieldPassword)}
+                required
+                validate={[required, passwordsMatch]}
+                className={classes.field}
+              />
+            </FormControl>
+
+          </div>
+          <div>
+            <FormControl className={classes.formControl}>
+              <Field
+                name="passwordConfirm"
+                component={TextFieldRedux}
+                type="password"
+                label={intl.formatMessage(messages.loginFieldRetypePassword)}
+                required
+                validate={[required, passwordsMatch]}
+                className={classes.field}
+              />
+            </FormControl>
+          </div>
+
           <div>
             <FormControlLabel control={<Field name="checkbox" required component={CheckboxRedux} className={classes.agree} />} label={intl.formatMessage(messages.aggree)} />
             <a href="/terms-conditions" target="_blank" className={classes.link}>
@@ -150,7 +139,7 @@ function RegisterForm(props) {
             </a>
           </div>
           <div className={classes.btnArea}>
-            <Button variant="contained" fullWidth disabled={loading} color="primary" type="submit" onClick={() => history.push('app/dashboard/gender')}>
+            <Button variant="contained" fullWidth disabled={loading} color="primary" type="submit" >
               {loading && <CircularProgress size={24} className={classes.buttonProgress} />}
               <FormattedMessage {...messages.loginButtonContinue} />
               {!loading && <ArrowForward className={classNames(classes.rightIcon, classes.iconSmall, classes.signArrow)} disabled={submitting || pristine} />}
@@ -158,40 +147,7 @@ function RegisterForm(props) {
           </div>
         </form>
       </section>
-      {/* <h5 className={classes.divider}>
-        <span>
-          <FormattedMessage {...messages.registerOr} />
-        </span>
-      </h5> */}
-      {/* <section className={classes.socmedSideLogin}>
-        <Button
-          variant="contained"
-          className={classes.redBtn}
-          type="button"
-          size="large"
-        >
-          <i className="ion-logo-google" />
-          Google
-        </Button>
-        <Button
-          variant="contained"
-          className={classes.cyanBtn}
-          type="button"
-          size="large"
-        >
-          <i className="ion-logo-twitter" />
-          Twitter
-        </Button>
-        <Button
-          variant="contained"
-          className={classes.greyBtn}
-          type="button"
-          size="large"
-        >
-          <i className="ion-logo-github" />
-          Github
-        </Button>
-      </section> */}
+
     </Paper>
   );
 }

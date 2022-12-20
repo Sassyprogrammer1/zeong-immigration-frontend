@@ -43,6 +43,8 @@ const authReducer = (state = AuthState, action = {}) => produce(state, draft => 
     case CREATE_USER_SUCCESS:
       draft.loading = false;
       draft.loggedIn = true;
+      draft.message = action.data.body.message;
+
       break;
 
     case LOGIN_FAILURE:

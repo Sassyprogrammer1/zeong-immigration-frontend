@@ -149,40 +149,7 @@ function LoginForm(props) {
           </div>
         </form>
       </section>
-      {/* <h5 className={classes.divider}>
-        <span>
-          <FormattedMessage {...messages.loginOr} />
-        </span>
-      </h5> */}
-      {/* <section className={classes.socmedSideLogin}>
-        <Button
-          variant="contained"
-          className={classes.redBtn}
-          type="button"
-          size="large"
-        >
-          <i className="ion-logo-google" />
-          Google
-        </Button>
-        <Button
-          variant="contained"
-          className={classes.cyanBtn}
-          type="button"
-          size="large"
-        >
-          <i className="ion-logo-twitter" />
-          Twitter
-        </Button>
-        <Button
-          variant="contained"
-          className={classes.greyBtn}
-          type="button"
-          size="large"
-        >
-          <i className="ion-logo-github" />
-          Github
-        </Button>
-      </section> */}
+
     </Paper>
   );
 }

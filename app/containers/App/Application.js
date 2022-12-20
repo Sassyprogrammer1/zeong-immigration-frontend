@@ -42,8 +42,6 @@ function Application(props) {
   const { history } = props;
   const changeMode = useContext(AppContext);
 
-  console.log({ changeMode });
-
   return (
     <Dashboard history={history} changeMode={changeMode}>
       <Switch>
