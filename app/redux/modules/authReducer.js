@@ -46,7 +46,6 @@ const authReducer = (state = AuthState, action = {}) => produce(state, draft => 
       draft.loading = false;
       draft.loggedIn = true;
       draft.message = action.credential;
-
       break;
 
     case LOGIN_FAILURE:
@@ -56,7 +55,7 @@ const authReducer = (state = AuthState, action = {}) => produce(state, draft => 
     case PASSWORD_FORGET_FAILURE:
     case LOGOUT_FAILURE:
       draft.loading = false;
-      draft.message = action.error.message;
+      draft.message = action.error;
       break;
 
     case PASSWORD_FORGET_SUCCESS:
