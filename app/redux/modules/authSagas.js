@@ -1,6 +1,7 @@
 import {
   call, fork, put, take, takeEvery, all
 } from 'redux-saga/effects';
+import axios from 'axios';
 import { firebaseAuth, firebaseDb } from '../../firebase';
 import history from '../../utils/history';
 import {
@@ -29,7 +30,7 @@ import {
 
 function getUrlVars() {
   const vars = {};
-  const parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) { // eslint-disable-line
+  const parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function (m, key, value) { // eslint-disable-line
     vars[key] = value;
   });
   return vars;
@@ -39,13 +40,15 @@ function* loginSaga(provider) {
   try {
     const data = yield call(firebaseAuth.signInWithPopup, provider.payload.authProvider);
     yield put(loginSuccess(data));
-    if (getUrlVars().next) {
-      // Redirect to next route
-      yield history.push(getUrlVars().next);
-    } else {
-      // Redirect to dashboard if no next parameter
-      yield history.push('/app');
-    }
+    yield history.push('/app');
+
+    // if (getUrlVars().next) {
+    //   // Redirect to next route
+    //   yield history.push(getUrlVars().next);
+    // } else {
+    //   // Redirect to dashboard if no next parameter
+    //   yield history.push('/app');
+    // }
   } catch (error) {
     yield put(loginFailure(error));
   }
@@ -53,15 +56,18 @@ function* loginSaga(provider) {
 
 function* loginWithEmailSaga(payload) {
   try {
-    const data = yield call(firebaseAuth.signInWithEmailAndPassword, payload.email, payload.password);
-    yield put(loginWithEmailSuccess(data));
-    if (getUrlVars().next) {
-      // Redirect to next route
-      yield history.push(getUrlVars().next);
-    } else {
-      // Redirect to dashboard if no next parameter
-      yield history.push('/app');
+    const res = yield axios.post('https://vt36i1ep1d.execute-api.us-east-2.amazonaws.com/dev/api/login',
+      { email: payload.email, password: payload.password });
+    if (res.data.statusCode === 200) {
+      localStorage.setItem('token', res?.data?.body?.token);
     }
+    // if (getUrlVars().next) {
+    //   // Redirect to next route
+    //   yield history.push(getUrlVars().next);
+    // } else {
+    //   // Redirect to dashboard if no next parameter
+    //   yield history.push('/app');
+    // }
   } catch (error) {
     yield put(loginWithEmailFailure(error));
   }
@@ -69,11 +75,9 @@ function* loginWithEmailSaga(payload) {
 
 function* registerWithEmailSaga(payload) {
   try {
-    yield call(firebaseAuth.createUserWithEmailAndPassword, payload.email, payload.password);
-    const dataWithName = yield call(firebaseAuth.updateProfile, {
-      displayName: payload.name,
-    });
-    yield put(registerWithEmailSuccess(dataWithName));
+    const data = yield axios.post('https://vt36i1ep1d.execute-api.us-east-2.amazonaws.com/dev/api/register',
+      { email: payload.email, password: payload.password });
+    yield put(registerWithEmailSuccess(data.data));
     // Redirect to dashboard
     yield history.push('/app');
   } catch (error) {

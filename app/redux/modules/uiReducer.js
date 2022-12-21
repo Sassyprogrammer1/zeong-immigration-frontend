@@ -17,7 +17,7 @@ const initialState = {
   theme: 'blueTheme',
   type: 'light', // light or dark
   direction: 'ltr', // ltr or rtl
-  layout: 'big-sidebar', // sidebar, big-sidebar, top-navigation, mega-menu
+  layout: 'sidebar', // sidebar, big-sidebar, top-navigation, mega-menu
   /* End settings */
   palette: [
     { name: 'Red', value: 'redTheme' },

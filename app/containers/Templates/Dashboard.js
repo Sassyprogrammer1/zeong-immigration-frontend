@@ -109,11 +109,11 @@ function Dashboard(props) {
             isLogin={isAuthenticated}
             userAttr={profile(user)}
           >
-            { children }
+            {children}
           </LeftSidebarLayout>
         )
       }
-      { /* Left Big-Sidebar Layout */
+      {/* { /* Left Big-Sidebar Layout */
         layout === 'big-sidebar' && (
           <LeftSidebarBigLayout
             history={history}
@@ -130,7 +130,7 @@ function Dashboard(props) {
             isLogin={isAuthenticated}
             userAttr={profile(user)}
           >
-            { children }
+            {children}
           </LeftSidebarBigLayout>
         )
       }
@@ -151,7 +151,7 @@ function Dashboard(props) {
             isLogin={isAuthenticated}
             userAttr={profile(user)}
           >
-            { children }
+            {children}
           </DropMenuLayout>
         )
       }
@@ -172,10 +172,10 @@ function Dashboard(props) {
             isLogin={isAuthenticated}
             userAttr={profile(user)}
           >
-            { children }
+            {children}
           </MegaMenuLayout>
         )
-      }
+      } */}
     </div>
   );
 }

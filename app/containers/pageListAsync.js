@@ -2,6 +2,10 @@ import React from 'react';
 import Loading from 'enl-components/Loading';
 import loadable from '../utils/loadable';
 
+// students Pages
+export const StudentGender = loadable(() => import('./Pages/Students/Gender'), {
+  fallback: <Loading />,
+});
 // Landing Page
 export const HomePage = loadable(() => import('./LandingPage/HomePage'), {
   fallback: <Loading />,

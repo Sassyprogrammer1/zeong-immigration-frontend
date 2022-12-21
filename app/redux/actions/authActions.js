@@ -36,9 +36,8 @@ export const loginWithEmailFailure = error => ({
   error
 });
 
-export const registerWithEmail = (name, email, password) => ({
+export const registerWithEmail = (email, password) => ({
   type: types.REGISTER_WITH_EMAIL_REQUEST,
-  name,
   email,
   password
 });
