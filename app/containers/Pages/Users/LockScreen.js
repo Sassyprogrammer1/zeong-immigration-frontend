@@ -16,7 +16,6 @@ function LockScreen(props) {
 
   useEffect(() => {
     if (valueForm) {
-      console.log(`You submitted:\n\n${valueForm}`);
       window.location.href = '/app';
     }
   }, [valueForm]);

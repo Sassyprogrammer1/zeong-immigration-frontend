@@ -52,6 +52,8 @@ function LoginForm(props) {
 
   } = props;
 
+  console.log('eeeeee', messagesAuth);
+
   const history = useHistory();
   const [showPassword, setShowPassword] = useState(false);
 

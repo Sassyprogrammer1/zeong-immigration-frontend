@@ -10,7 +10,6 @@ window.__MUI_USE_NEXT_TYPOGRAPHY_VARIANTS__ = true;
 
 function App(props) {
   const { history } = props;
-  console.log('history', history);
   return (
     <ThemeWrapper>
       <Router history={history}>

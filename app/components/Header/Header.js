@@ -145,13 +145,7 @@ function Header(props) {
         </div>
         <Hidden smDown>
           <div className={classes.headerProperties}>
-            <div
-              className={classNames(
-                classes.headerAction,
-                showTitle && classes.fadeOut,
-              )}
-            >
-            </div>
+
             <Typography
               component="h2"
               className={classNames(

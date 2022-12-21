@@ -16,7 +16,8 @@ import {
   PASSWORD_FORGET_FAILURE,
   PASSWORD_FORGET_SUCCESS,
   SYNC_USER,
-  HIDE_MSG
+  HIDE_MSG,
+  REGISTER_WITH_EMAIL_SUCCESS
 } from '../constants/authConstants';
 
 export const AuthState = {
@@ -40,10 +41,11 @@ const authReducer = (state = AuthState, action = {}) => produce(state, draft => 
 
     case LOGIN_SUCCESS:
     case LOGIN_WITH_EMAIL_SUCCESS:
+    case REGISTER_WITH_EMAIL_SUCCESS:
     case CREATE_USER_SUCCESS:
       draft.loading = false;
       draft.loggedIn = true;
-      draft.message = action.data.body.message;
+      draft.message = action.credential;
 
       break;
 

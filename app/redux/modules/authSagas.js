@@ -27,6 +27,7 @@ import {
   passwordForgetSuccess,
   passwordForgetFailure,
 } from '../actions/authActions';
+import api from '../../api/baseUrl/BaseUrl';
 
 function getUrlVars() {
   const vars = {};
@@ -38,9 +39,11 @@ function getUrlVars() {
 
 function* loginSaga(provider) {
   try {
-    const data = yield call(firebaseAuth.signInWithPopup, provider.payload.authProvider);
-    yield put(loginSuccess(data));
-    yield history.push('/app');
+    const res = yield call(firebaseAuth.signInWithPopup, provider.payload.authProvider);
+    if (res.statusCode === 200) {
+      yield put(loginWithEmailSuccess(res));
+      yield history.push('/app');
+    }
 
     // if (getUrlVars().next) {
     //   // Redirect to next route
@@ -56,18 +59,17 @@ function* loginSaga(provider) {
 
 function* loginWithEmailSaga(payload) {
   try {
-    const res = yield axios.post('https://vt36i1ep1d.execute-api.us-east-2.amazonaws.com/dev/api/login',
+    const res = yield api.post('/login',
       { email: payload.email, password: payload.password });
+
     if (res.data.statusCode === 200) {
+      yield put(loginWithEmailSuccess(res.data.body.message));
       localStorage.setItem('token', res?.data?.body?.token);
+      yield history.push('/app');
     }
-    // if (getUrlVars().next) {
-    //   // Redirect to next route
-    //   yield history.push(getUrlVars().next);
-    // } else {
-    //   // Redirect to dashboard if no next parameter
-    //   yield history.push('/app');
-    // }
+    if (res.data.statusCode === 400) {
+      yield put(loginWithEmailSuccess(res.data.message));
+    }
   } catch (error) {
     yield put(loginWithEmailFailure(error));
   }
@@ -75,11 +77,20 @@ function* loginWithEmailSaga(payload) {
 
 function* registerWithEmailSaga(payload) {
   try {
-    const data = yield axios.post('https://vt36i1ep1d.execute-api.us-east-2.amazonaws.com/dev/api/register',
+    const res = yield api.post('/register',
       { email: payload.email, password: payload.password });
-    yield put(registerWithEmailSuccess(data.data));
-    // Redirect to dashboard
-    yield history.push('/app');
+
+    if (res.data.statusCode === 200) {
+      yield put(registerWithEmailSuccess(res.data.body.message));
+
+      // Redirect to dashboard
+      // yield history.push('/app');
+    } else if (res.data.statusCode === 400) {
+      console.log('res', res);
+      yield put(registerWithEmailSuccess(res.data.message));
+      // Redirect to dashboard
+      // yield history.push('/register');
+    }
   } catch (error) {
     yield put(registerWithEmailFailure(error));
   }
