@@ -151,39 +151,6 @@ function Header(props) {
                 showTitle && classes.fadeOut,
               )}
             >
-              {/* {fullScreen ? (
-                <></>
-                // <Tooltip title={intl.formatMessage(messages.fullScreen)} placement="bottom">
-                //   <IconButton
-                //     className={classes.button}
-                //     onClick={closeFullScreen}
-                //   >
-                //     <FullscreenExitOutlined />
-                //   </IconButton>
-                // </Tooltip>
-              ) : (
-                <Tooltip title={intl.formatMessage(messages.exitFullScreen)} placement="bottom">
-                  <IconButton
-                    className={classes.button}
-                    onClick={openFullScreen}
-                  >
-                    <FullscreenOutlined />
-                  </IconButton>
-                </Tooltip>
-              )} */}
-              {/* <Tooltip title={intl.formatMessage(messages.lamp)} placement="bottom">
-                <IconButton
-                  className={classes.button}
-                  onClick={() => turnMode(mode)}
-                >
-                  <InvertColors />
-                </IconButton>
-              </Tooltip>
-              <Tooltip title={intl.formatMessage(messages.guide)} placement="bottom">
-                <IconButton className={classes.button} onClick={openGuide}>
-                  <HelpOutlineOutlined />
-                </IconButton>
-              </Tooltip> */}
             </div>
             <Typography
               component="h2"
