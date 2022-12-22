@@ -10,7 +10,7 @@ import {
   LOGIN_FAILURE,
   LOGIN_WITH_EMAIL_FAILURE,
   REGISTER_WITH_EMAIL_FAILURE,
-  CREATE_USER_FAILURE,
+
   LOGOUT_FAILURE,
   LOGOUT_SUCCESS,
   PASSWORD_FORGET_FAILURE,
@@ -51,7 +51,6 @@ const authReducer = (state = AuthState, action = {}) => produce(state, draft => 
     case LOGIN_FAILURE:
     case LOGIN_WITH_EMAIL_FAILURE:
     case REGISTER_WITH_EMAIL_FAILURE:
-    case CREATE_USER_FAILURE:
     case PASSWORD_FORGET_FAILURE:
     case LOGOUT_FAILURE:
       draft.loading = false;

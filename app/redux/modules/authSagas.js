@@ -71,8 +71,8 @@ function* loginWithEmailSaga(payload) {
         message: res.data.message,
         status: res.data.status,
       };
-      console.log('data', res.data.message);
-      yield put(loginWithEmailFailure(res.data.message));
+      console.log('data', res.data.body.message);
+      yield put(loginWithEmailFailure(res.data.body.message));
     }
     // if (res.data.statusCode === 400) {
 
