@@ -32,7 +32,7 @@ function Banner(props) {
         <use xlinkHref="/images/decoration/hexaDecoration.svg#decoration" />
       </svg>
       <div className={classes.container}>
-        <Typography component="h2" variant="h2" gutterBottom>Enlite Prime</Typography>
+        <Typography component="h2" variant="h2" gutterBottom>Zeong Immigration</Typography>
         <Typography component="p" variant="h5" gutterBottom>
           <FormattedMessage {...messages.subtitle} />
         </Typography>

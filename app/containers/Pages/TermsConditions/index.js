@@ -60,7 +60,7 @@ function TermsConditions(props) {
                 Thank you.
               </Typography>
               <Typography gutterBottom align="left">
-                Enlint Prime Team
+                Zeong Immigration
               </Typography>
             </article>
           </Paper>
