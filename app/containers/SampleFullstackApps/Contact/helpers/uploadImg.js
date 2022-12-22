@@ -24,8 +24,8 @@ const uploadImg = (file, callback) => {
       }
     },
     (error) => {
-    // A full list of error codes is available at
-    // https://firebase.google.com/docs/storage/web/handle-errors
+      // A full list of error codes is available at
+      // https://firebase.google.com/docs/storage/web/handle-errors
       switch (error.code) {
         case 'storage/unauthorized':
           console.error('User doesn\'t have permission to access the object');

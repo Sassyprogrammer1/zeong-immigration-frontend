@@ -11,6 +11,7 @@ const firebaseApp = firebase.initializeApp(firebaseConfig);
 
 export const firebaseDb = firebase.database();
 export const firebaseSocialAuth = firebase.auth();
+
 export const rsf = new ReduxSagaFirebase(firebaseApp);
 export const firebaseAuth = rsf.auth;
 

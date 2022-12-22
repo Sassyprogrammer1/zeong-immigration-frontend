@@ -49,6 +49,7 @@ function ThemeWrapper(props) {
     mode,
     palette,
   } = props;
+
   const [loading, setLoading] = useState(0);
   const [newPalette, setNewPalette] = useState(undefined);
   const [theme, setTheme] = useState(createTheme(applicationTheme(color, mode, direction)));

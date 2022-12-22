@@ -159,38 +159,7 @@ function LoginForm(props) {
           <FormattedMessage {...messages.loginOr} />
         </span>
       </h5>
-      <section className={classes.socmedSideLogin}>
-        <Button
-          variant="contained"
-          className={classes.redBtn}
-          type="button"
-          size="large"
-          onClick={signInWithGoogleFn}
-        >
-          <i className="ion-logo-google" />
-          Google
-        </Button>
-        <Button
-          variant="contained"
-          className={classes.cyanBtn}
-          type="button"
-          size="large"
-          onClick={signInWithTwitterFn}
-        >
-          <i className="ion-logo-twitter" />
-          Twitter
-        </Button>
-        <Button
-          variant="contained"
-          className={classes.greyBtn}
-          type="button"
-          size="large"
-          onClick={signInWithGithubFn}
-        >
-          <i className="ion-logo-github" />
-          Github
-        </Button>
-      </section>
+
     </Paper>
   );
 }

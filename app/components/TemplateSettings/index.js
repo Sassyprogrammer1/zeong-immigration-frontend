@@ -147,7 +147,7 @@ function TemplateSettings(props) {
                     <Icon className={classes.icon}>color_lens</Icon>
                     Theme Color
                   </FormLabel>
-                  { palette !== undefined && getItem(palette) }
+                  {palette !== undefined && getItem(palette)}
                 </FormControl>
               </Paper>
               <Paper className={classes.optBlock}>
