@@ -6,6 +6,11 @@ import loadable from '../utils/loadable';
 export const StudentGender = loadable(() => import('./Pages/Students/Gender'), {
   fallback: <Loading />,
 });
+// Student chart
+export const StudentChart = loadable(() => import('./Pages/StudentChart/StudentChart'), {
+  fallback: <Loading />,
+});
+
 // Landing Page
 export const HomePage = loadable(() => import('./LandingPage/HomePage'), {
   fallback: <Loading />,

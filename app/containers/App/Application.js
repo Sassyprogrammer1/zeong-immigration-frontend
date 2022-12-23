@@ -35,7 +35,8 @@ import {
   MapMarker, MapDirection, SearchMap,
   TrafficIndicator, StreetViewMap,
   NotFound,
-  StudentGender
+  StudentGender,
+  StudentChart
 } from '../pageListAsync';
 
 function Application(props) {
@@ -47,6 +48,8 @@ function Application(props) {
       <Switch>
         {/* Student */}
         <Route exact path="/app/dashboard/gender" component={StudentGender} />
+        {/* Student chart */}
+        <Route path="/app/dashboard/student-chart" component={StudentChart} />
 
         { /* Home */}
         <Route exact path="/app" component={AnalyticDashboard} />

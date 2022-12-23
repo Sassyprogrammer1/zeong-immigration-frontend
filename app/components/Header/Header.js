@@ -47,7 +47,6 @@ function Header(props) {
     intl
   } = props;
 
-  console.log('classes', classes);
   const [open] = useState(false);
   const [fullScreen, setFullScreen] = useState(false);
   const [turnDarker, setTurnDarker] = useState(false);
