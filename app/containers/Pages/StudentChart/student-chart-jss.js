@@ -1,33 +1,35 @@
 const styles = theme => ({
-  root: {
+  stdContainer: {
     display: 'flex',
     background: theme.palette.primary.light,
     boxShadow: theme.shadows[1],
-    borderRadius: 15,
+    borderRadius: 30,
+    maxWidth: 600,
+    maxHeight: 600,
+    justifyContent: 'center',
+    alignItem: 'center',
+    overflow: 'hidden',
+    [theme.breakpoints.down('xs')]: {
+      overflowX: 'scroll',
+      scrollBehavior: 'smooth',
+    }
+  },
 
-  },
-  rootGeneral: {
-    padding: theme.spacing(3)
-  },
   divider: {
-    margin: `${theme.spacing(1.5)}px 0`,
+
     background: 'none',
     display: 'block',
   },
-  sliderWrap: {
-    position: 'relative',
-    display: 'block',
-    boxShadow: theme.shadows[1],
-    width: '100%',
-    borderRadius: theme.rounded.medium,
-    overflow: 'hidden'
+  chart: {
+    marginTop: theme.spacing(9),
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    margin: 100
+
   },
-  noPadding: {
-    paddingTop: '0 !important',
-    paddingBottom: '0 !important',
-    [theme.breakpoints.up('sm')]: {
-      padding: '0 !important'
-    }
+  button: {
+    margin: theme.spacing(1),
   },
 
 });

@@ -24,6 +24,13 @@ module.exports = [
 
       },
       {
+        key: 'University',
+        name: 'University',
+        link: '/app/dashboard/student-university',
+        icon: 'business',
+
+      },
+      {
         key: 'landing_page',
         name: 'Landing Page',
         title: true,

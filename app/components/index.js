@@ -111,6 +111,7 @@ export Comments from './SocialMedia/Comments';
 // Product
 export ProductGallery from './Product/ProductGallery';
 export SearchProduct from './Search/SearchProduct';
+export StudentSearch from './Search/StudentSearch';
 export ProductDesc from './Product/ProductDesc';
 export Invoice from './Invoice';
 export AddressForm from './Forms/AddressForm';
