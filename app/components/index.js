@@ -1,3 +1,5 @@
+import SearchCourse from './Search/SearchCourse';
+
 // Main Components
 export Header from './Header/Header';
 export HeaderMenu from './Header/HeaderMenu';
@@ -112,6 +114,7 @@ export Comments from './SocialMedia/Comments';
 export ProductGallery from './Product/ProductGallery';
 export SearchProduct from './Search/SearchProduct';
 export StudentSearch from './Search/StudentSearch';
+export SearchCourse from './Search/SearchCourse';
 export ProductDesc from './Product/ProductDesc';
 export Invoice from './Invoice';
 export AddressForm from './Forms/AddressForm';

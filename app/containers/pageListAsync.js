@@ -16,6 +16,11 @@ export const StudentUniversity = loadable(() => import('./Pages/StudentUniversit
   fallback: <Loading />,
 });
 
+// Student Course
+export const StudentCourse = loadable(() => import('./Pages/StudentCourse/StudentCourse'), {
+  fallback: <Loading />,
+});
+
 // Landing Page
 export const HomePage = loadable(() => import('./LandingPage/HomePage'), {
   fallback: <Loading />,
