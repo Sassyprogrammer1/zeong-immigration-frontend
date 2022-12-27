@@ -3,9 +3,19 @@ import Loading from 'enl-components/Loading';
 import loadable from '../utils/loadable';
 
 // students Pages
-export const StudentGender = loadable(() => import('./Pages/Students/Gender'), {
+export const StudentGender = loadable(() => import('./Pages/Students/StudentGender'), {
   fallback: <Loading />,
 });
+// Student chart
+export const StudentChart = loadable(() => import('./Pages/StudentChart/StudentChart'), {
+  fallback: <Loading />,
+});
+
+// StudentUniversity
+export const StudentUniversity = loadable(() => import('./Pages/StudentUniversity/StudentUniversity'), {
+  fallback: <Loading />,
+});
+
 // Landing Page
 export const HomePage = loadable(() => import('./LandingPage/HomePage'), {
   fallback: <Loading />,

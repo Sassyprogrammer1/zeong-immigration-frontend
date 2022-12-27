@@ -1,7 +1,7 @@
 module.exports = {
-  name: 'Enlite Prime',
-  desc: 'Enlite Prime - React.js Fullstack Template',
+  name: 'Zeong Immigration',
+  desc: 'Zeong Immigration ',
   prefix: 'enlite',
-  footerText: 'Enlite Prime All Rights Reserved 2020',
-  logoText: 'Enlite Prime',
+  footerText: 'Zeong Immigration All Rights Reserved 2020',
+  logoText: 'Zeong Immigration',
 };

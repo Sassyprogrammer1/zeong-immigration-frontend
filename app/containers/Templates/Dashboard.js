@@ -175,7 +175,7 @@ function Dashboard(props) {
             {children}
           </MegaMenuLayout>
         )
-      } */}
+      }
     </div>
   );
 }

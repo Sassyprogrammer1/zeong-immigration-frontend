@@ -80,7 +80,8 @@ function RegisterForm(props) {
         messagesAuth !== null || ''
           ? (
             <MessagesForm
-              variant="error"
+              variant={messagesAuth
+                === 'User registration successful' ? 'success' : 'error'}
               className={classes.msgUser}
               message={messagesAuth}
               onClose={closeMsg}

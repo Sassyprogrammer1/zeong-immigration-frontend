@@ -14,7 +14,21 @@ module.exports = [
         name: 'Gender',
         link: '/app/dashboard/gender',
         icon: 'business',
-        badge: 'Hot'
+
+      },
+      {
+        key: 'Student Chart',
+        name: 'Student Chart',
+        link: '/app/dashboard/student-chart',
+        icon: 'business',
+
+      },
+      {
+        key: 'University',
+        name: 'University',
+        link: '/app/dashboard/student-university',
+        icon: 'business',
+
       },
       {
         key: 'landing_page',

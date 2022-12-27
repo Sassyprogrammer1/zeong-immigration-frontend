@@ -26,6 +26,7 @@ import { CheckboxRedux, TextFieldRedux } from './ReduxFormMUI';
 import MessagesForm from './MessagesForm';
 import messages from './messages';
 import styles from './user-jss';
+import { loginSuccess } from '../../redux/actions/authActions';
 
 // validation functions
 const required = value => (value === null ? 'Required' : undefined);
@@ -51,8 +52,6 @@ function LoginForm(props) {
     loading,
 
   } = props;
-
-  console.log('eeeeee', messagesAuth);
 
   const history = useHistory();
   const [showPassword, setShowPassword] = useState(false);
@@ -83,7 +82,8 @@ function LoginForm(props) {
         messagesAuth !== null || ''
           ? (
             <MessagesForm
-              variant="error"
+              variant={messagesAuth
+                === 'User registration successful' ? 'success' : 'error'}
               className={classes.msgUser}
               message={messagesAuth}
               onClose={closeMsg}

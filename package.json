@@ -1,5 +1,5 @@
 {
-  "name": "enlite_prime",
+  "name": "zeong_immigration",
   "version": "1.9.3",
   "description": "React.js fullstack web template for expert and experienced fullstack developer",
   "private": true,
@@ -7,7 +7,7 @@
     "npm": ">=6.12.0",
     "node": ">=12.13.0"
   },
-  "author": "Enlite Prime Team",
+  "author": "Zeong Immigration",
   "scripts": {
     "analyze:clean": "rimraf stats.json",
     "preanalyze": "npm run analyze:clean",

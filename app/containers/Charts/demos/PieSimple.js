@@ -17,8 +17,8 @@ const color = ({
 function PieSimple() {
   return (
     <PieChart
-      width={800}
-      height={450}
+      width={500}
+      height={400}
       margin={{
         top: 5,
         right: 30,
