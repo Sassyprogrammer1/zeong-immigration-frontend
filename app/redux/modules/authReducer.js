@@ -17,7 +17,8 @@ import {
   PASSWORD_FORGET_SUCCESS,
   SYNC_USER,
   HIDE_MSG,
-  REGISTER_WITH_EMAIL_SUCCESS
+  REGISTER_WITH_EMAIL_SUCCESS,
+  GET_ROLE
 } from '../constants/authConstants';
 
 export const AuthState = {
@@ -25,7 +26,8 @@ export const AuthState = {
   loggedIn: null,
   user: null,
   uid: null,
-  message: null
+  message: null,
+  role: null
 };
 
 /* eslint-disable default-case, no-param-reassign */
@@ -39,6 +41,7 @@ const authReducer = (state = AuthState, action = {}) => produce(state, draft => 
       draft.message = null;
       break;
 
+    case GET_ROLE:
     case LOGIN_SUCCESS:
     case LOGIN_WITH_EMAIL_SUCCESS:
     case REGISTER_WITH_EMAIL_SUCCESS:
@@ -46,6 +49,7 @@ const authReducer = (state = AuthState, action = {}) => produce(state, draft => 
       draft.loading = false;
       draft.loggedIn = true;
       draft.message = action.credential;
+      draft.role = action.role;
       break;
 
     case LOGIN_FAILURE:

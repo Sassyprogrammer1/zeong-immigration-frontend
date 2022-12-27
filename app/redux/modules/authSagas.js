@@ -26,6 +26,7 @@ import {
   createUserFailure,
   passwordForgetSuccess,
   passwordForgetFailure,
+  getRole,
 } from '../actions/authActions';
 import api from '../../api/baseUrl/BaseUrl';
 
@@ -62,8 +63,10 @@ function* loginWithEmailSaga(payload) {
     const res = yield api.post('/consultant/login',
       { email: payload.email, password: payload.password });
 
-    if (res.data.statusCode === 200) {
+    if (res.data.statusCode === 200 && res.data.body.role[0].Value === 'studentConsultant') {
+      console.log(res.data.body.role[0].Value, 'Sssss');
       yield put(loginWithEmailSuccess(res.data.body.message));
+      yield put(getRole(res.data.body.role[0].Value));
       localStorage.setItem('token', res?.data?.body?.token);
       yield history.push('/app');
     } else {
