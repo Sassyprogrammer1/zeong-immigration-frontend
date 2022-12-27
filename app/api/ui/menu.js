@@ -5,6 +5,32 @@ module.exports = [
     icon: 'home',
     child: [
       {
+        key: 'Student_Info',
+        name: 'Student Info',
+        title: true,
+      },
+      {
+        key: 'gender',
+        name: 'Gender',
+        link: '/app/dashboard/gender',
+        icon: 'business',
+
+      },
+      {
+        key: 'Student Chart',
+        name: 'Student Chart',
+        link: '/app/dashboard/student-chart',
+        icon: 'business',
+
+      },
+      {
+        key: 'University',
+        name: 'University',
+        link: '/app/dashboard/student-university',
+        icon: 'business',
+
+      },
+      {
         key: 'landing_page',
         name: 'Landing Page',
         title: true,

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import classNames from 'classnames';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useHistory } from 'react-router-dom';
 import Hidden from '@material-ui/core/Hidden';
 import { Field, reduxForm } from 'redux-form';
 import Button from '@material-ui/core/Button';
@@ -26,6 +26,7 @@ import { CheckboxRedux, TextFieldRedux } from './ReduxFormMUI';
 import MessagesForm from './MessagesForm';
 import messages from './messages';
 import styles from './user-jss';
+import { loginSuccess } from '../../redux/actions/authActions';
 
 // validation functions
 const required = value => (value === null ? 'Required' : undefined);
@@ -48,8 +49,11 @@ function LoginForm(props) {
     intl,
     messagesAuth,
     closeMsg,
-    loading
+    loading,
+
   } = props;
+
+  const history = useHistory();
   const [showPassword, setShowPassword] = useState(false);
 
   const handleClickShowPassword = () => setShowPassword(!showPassword);
@@ -78,7 +82,8 @@ function LoginForm(props) {
         messagesAuth !== null || ''
           ? (
             <MessagesForm
-              variant="error"
+              variant={messagesAuth
+                === 'User registration successful' ? 'success' : 'error'}
               className={classes.msgUser}
               message={messagesAuth}
               onClose={closeMsg}
@@ -138,7 +143,7 @@ function LoginForm(props) {
             </Button>
           </div>
           <div className={classes.btnArea}>
-            <Button variant="contained" disabled={loading} fullWidth color="primary" size="large" type="submit">
+            <Button variant="contained" disabled={loading} fullWidth color="primary" size="large" type="submit" >
               {loading && <CircularProgress size={24} className={classes.buttonProgress} />}
               <FormattedMessage {...messages.loginButtonContinue} />
               {!loading && <ArrowForward className={classNames(classes.rightIcon, classes.iconSmall, classes.signArrow)} disabled={submitting || pristine} />}
@@ -146,40 +151,7 @@ function LoginForm(props) {
           </div>
         </form>
       </section>
-      <h5 className={classes.divider}>
-        <span>
-          <FormattedMessage {...messages.loginOr} />
-        </span>
-      </h5>
-      <section className={classes.socmedSideLogin}>
-        <Button
-          variant="contained"
-          className={classes.redBtn}
-          type="button"
-          size="large"
-        >
-          <i className="ion-logo-google" />
-          Google
-        </Button>
-        <Button
-          variant="contained"
-          className={classes.cyanBtn}
-          type="button"
-          size="large"
-        >
-          <i className="ion-logo-twitter" />
-          Twitter
-        </Button>
-        <Button
-          variant="contained"
-          className={classes.greyBtn}
-          type="button"
-          size="large"
-        >
-          <i className="ion-logo-github" />
-          Github
-        </Button>
-      </section>
+
     </Paper>
   );
 }

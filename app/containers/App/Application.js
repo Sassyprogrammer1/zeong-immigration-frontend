@@ -34,7 +34,9 @@ import {
   Photos, Error,
   MapMarker, MapDirection, SearchMap,
   TrafficIndicator, StreetViewMap,
-  NotFound
+  NotFound,
+  StudentGender,
+  StudentChart, StudentUniversity
 } from '../pageListAsync';
 
 function Application(props) {
@@ -44,30 +46,38 @@ function Application(props) {
   return (
     <Dashboard history={history} changeMode={changeMode}>
       <Switch>
-        { /* Home */ }
+        {/* Student */}
+        <Route exact path="/app/dashboard/gender" component={StudentGender} />
+        {/* Student chart */}
+        <Route path="/app/dashboard/student-chart" component={StudentChart} />
+
+        {/* StudentUniversity */}
+        <Route path="/app/dashboard/student-university" component={StudentUniversity} />
+
+        { /* Home */}
         <Route exact path="/app" component={AnalyticDashboard} />
         <Route path="/app/dashboard/marketing" component={MarketingDashboard} />
         <Route path="/app/dashboard/crypto" component={CryptoDashboard} />
-        { /* Widgets */ }
+        { /* Widgets */}
         <Route exact path="/app/widgets" component={Parent} />
         <Route path="/app/widgets/infographics" component={Infographics} />
         <Route path="/app/widgets/mini-apps" component={MiniApps} />
         <Route path="/app/widgets/analytics" component={Analytics} />
         <Route path="/app/widgets/gallery-carousel" component={Gallery} />
         <Route path="/app/widgets/status" component={Status} />
-        { /* Layout */ }
+        { /* Layout */}
         <Route exact path="/app/layouts" component={Parent} />
         <Route path="/app/layouts/grid" component={Grid} />
         <Route path="/app/layouts/app-layout" component={AppLayout} />
         <Route path="/app/layouts/responsive" component={Responsive} />
-        { /* Table */ }
+        { /* Table */}
         <Route exact path="/app/tables" component={Parent} />
         <Route path="/app/tables/basic-table" component={SimpleTable} />
         <Route path="/app/tables/data-table" component={AdvancedTable} />
         <Route path="/app/tables/table-playground" component={TablePlayground} />
         <Route path="/app/tables/editable-cell" component={EditableCell} />
         <Route path="/app/tables/tree-table" component={TreeTable} />
-        { /* Form & Button */ }
+        { /* Form & Button */}
         <Route exact path="/app/forms" component={Parent} />
         <Route path="/app/forms/reduxform" component={ReduxForm} />
         <Route path="/app/forms/date-time-picker" component={DateTimePicker} />
@@ -103,7 +113,7 @@ function Application(props) {
         <Route path="/app/ui/slider-carousel" component={SliderCarousel} />
         <Route path="/app/ui/tags" component={Tags} />
         <Route path="/app/ui/tree-view" component={TreeView} />
-        { /* Chart */ }
+        { /* Chart */}
         <Route exact path="/app/charts" component={Parent} />
         <Route path="/app/charts/line-charts" component={LineCharts} />
         <Route path="/app/charts/bar-charts" component={BarCharts} />
@@ -112,14 +122,14 @@ function Application(props) {
         <Route path="/app/charts/radar-charts" component={RadarCharts} />
         <Route path="/app/charts/scatter-charts" component={ScatterCharts} />
         <Route path="/app/charts/compossed-chart" component={CompossedCharts} />
-        { /* Sample Apps */ }
+        { /* Sample Apps */}
         <Route path="/app/pages/contact" component={Contact} />
         <Route path="/app/pages/email" component={Email} />
         <Route path="/app/pages/todo" component={Todo} />
         <Route path="/app/pages/todo-firebase" component={TodoFirebase} />
         <Route path="/app/pages/contact-firebase" component={ContactFirebase} />
         <Route path="/app/pages/email-firebase" component={EmailFirebase} />
-        { /* Pages */ }
+        { /* Pages */}
         <Route exact path="/app/pages" component={Parent} />
         <Route path="/app/pages/ecommerce" component={Ecommerce} />
         <Route path="/app/pages/product-detail" component={ProductPage} />
@@ -133,14 +143,14 @@ function Application(props) {
         <Route path="/app/pages/photo-gallery" component={Photos} />
         <Route path="/app/pages/not-found" component={NotFound} />
         <Route path="/app/pages/error" component={Error} />
-        { /* Map */ }
+        { /* Map */}
         <Route exact path="/app/maps" component={Parent} />
         <Route path="/app/maps/map-marker" component={MapMarker} />
         <Route path="/app/maps/map-direction" component={MapDirection} />
         <Route path="/app/maps/map-searchbox" component={SearchMap} />
         <Route path="/app/maps/map-traffic" component={TrafficIndicator} />
         <Route path="/app/maps/street-view" component={StreetViewMap} />
-        { /* Default */ }
+        { /* Default */}
         <Route component={NotFound} />
       </Switch>
     </Dashboard>

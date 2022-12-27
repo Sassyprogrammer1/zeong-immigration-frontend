@@ -11,7 +11,7 @@ const styles = theme => ({
     minHeight: 'auto'
   },
   flex: {
-    flex: 1,
+    flex: 2
   },
   menuButton: {
     marginLeft: -12,
@@ -23,6 +23,7 @@ const styles = theme => ({
     marginRight: theme.spacing(2),
     marginLeft: theme.spacing(1),
     borderRadius: 2,
+    // border: `1px solid ${theme.palette.text.primary}`,
     display: 'block',
     color: theme.palette.text.secondary,
     '& svg': {
@@ -42,6 +43,7 @@ const styles = theme => ({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
+
   },
   input: {
     font: 'inherit',
@@ -131,7 +133,11 @@ const styles = theme => ({
   },
   selected: {
     background: `${theme.palette.primary.light} !important`
+  },
+  fillterButton: {
+
   }
+
 });
 
 export default styles;
