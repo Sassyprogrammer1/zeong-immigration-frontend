@@ -1,10 +1,8 @@
 import { createSelector } from 'reselect';
 
-
 export function isAuthenticated(state) {
   return state.auth.authenticated;
 }
-
 
 //= ====================================
 //  MEMOIZED SELECTORS
