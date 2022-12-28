@@ -4,6 +4,10 @@ import * as types from '../constants/authConstants';
 //= ====================================
 //  EMAIL AUTH
 //-------------------------------------
+export const getRole = role => ({
+  type: types.GET_ROLE,
+  role,
+});
 
 export const login = authProvider => ({
   type: types.LOGIN_REQUEST,

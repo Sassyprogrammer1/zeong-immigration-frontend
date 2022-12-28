@@ -36,7 +36,8 @@ import {
   TrafficIndicator, StreetViewMap,
   NotFound,
   StudentGender,
-  StudentChart, StudentUniversity
+  StudentChart, StudentUniversity,
+  StudentCourse
 } from '../pageListAsync';
 
 function Application(props) {
@@ -53,6 +54,9 @@ function Application(props) {
 
         {/* StudentUniversity */}
         <Route path="/app/dashboard/student-university" component={StudentUniversity} />
+
+        {/* StudentUniversity */}
+        <Route path="/app/dashboard/student-course" component={StudentCourse} />
 
         { /* Home */}
         <Route exact path="/app" component={AnalyticDashboard} />

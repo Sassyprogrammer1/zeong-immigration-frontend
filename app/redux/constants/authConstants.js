@@ -27,3 +27,4 @@ export const LOGOUT_FAILURE = 'LOGOUT_FAILURE';
 export const SYNC_USER = 'SYNC_USER';
 
 export const HIDE_MSG = 'HIDE_MSG';
+export const GET_ROLE = 'GET_ROLE';

@@ -13,13 +13,12 @@ import ViewList from '@material-ui/icons/ViewList';
 import GridOn from '@material-ui/icons/GridOn';
 import ToggleButton from '@material-ui/lab/ToggleButton';
 import ToggleButtonGroup from '@material-ui/lab/ToggleButtonGroup';
-import Button from '@material-ui/core/Button';
 import { injectIntl, FormattedMessage } from 'react-intl';
 import messages from './messages';
 import Cart from '../Product/Cart';
 import styles from './search-jss';
 
-function StudentSearch(props) {
+function SearchCourse(props) {
   const {
     classes,
     dataCart,
@@ -61,44 +60,47 @@ function StudentSearch(props) {
     <div className={classes.root}>
       <AppBar position="static" color="inherit">
         <Toolbar className={classes.searchBar}>
-
           <div className={classes.flex}>
             <div className={classes.wrapper}>
               <div className={classes.search}>
                 <SearchIcon />
               </div>
-              <input className={classes.input} placeholder="Search University" onChange={(event) => search(event)} />
+              <input className={classes.input} placeholder={intl.formatMessage(messages.placeholder)} onChange={(event) => search(event)} />
             </div>
           </div>
           <Typography variant="caption" className={classes.result}>
             {getTotalResult(dataProduct)}
-            &nbsp;
+                        &nbsp;
             <FormattedMessage {...messages.result} />
           </Typography>
 
-          <div className={classes.fillterButton}>
-            <Button color="primary" className={classes.button}>
-              In DEMAOND
-            </Button>
-            <Button color="primary" className={classes.button}>
-              TOP TIER
-            </Button>
-            <Button color="primary" className={classes.button}>
-              Science
-            </Button>
-            <Button color="primary" className={classes.button}>
-              Computer
-            </Button>
-
+          <div className={classes.cart}>
+            <IconButton
+              color="inherit"
+              aria-owns={anchorEl ? 'simple-menu' : null}
+              aria-haspopup="true"
+              onClick={handleClick}
+            >
+              <Badge badgeContent={totalItems} color="secondary">
+                <ShoppingCartIcon />
+              </Badge>
+            </IconButton>
+            <Cart
+              anchorEl={anchorEl}
+              dataCart={dataCart}
+              close={handleClose}
+              removeItem={removeItem}
+              checkout={checkout}
+              totalPrice={totalPrice}
+            />
           </div>
-
         </Toolbar>
       </AppBar>
     </div>
   );
 }
 
-StudentSearch.propTypes = {
+SearchCourse.propTypes = {
   classes: PropTypes.object.isRequired,
   dataCart: PropTypes.array.isRequired,
   removeItem: PropTypes.func.isRequired,
@@ -113,4 +115,4 @@ StudentSearch.propTypes = {
   intl: PropTypes.object.isRequired
 };
 
-export default withStyles(styles)(injectIntl(StudentSearch));
+export default withStyles(styles)(injectIntl(SearchCourse));
