@@ -31,6 +31,13 @@ module.exports = [
 
       },
       {
+        key: 'Student form',
+        name: 'Student Info',
+        link: '/app/dashboard/student-info',
+        icon: 'business',
+
+      },
+      {
         key: 'Course',
         name: 'Course',
         link: '/app/dashboard/student-course',

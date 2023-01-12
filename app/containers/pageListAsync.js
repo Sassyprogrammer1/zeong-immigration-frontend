@@ -22,9 +22,15 @@ export const StudentCourse = loadable(() => import('./Pages/StudentCourse/Studen
 });
 
 // Landing Page
+export const StudentInfo = loadable(() => import('./Pages/StudentInfo/StudentInfo'), {
+  fallback: <Loading />,
+});
+
+// Landing Page
 export const HomePage = loadable(() => import('./LandingPage/HomePage'), {
   fallback: <Loading />,
 });
+
 // Dashboard
 export const AnalyticDashboard = loadable(() => import('./Dashboard/AnalyticDashboard'), {
   fallback: <Loading />,
