@@ -2,7 +2,7 @@ import imgApi from 'enl-api/images/photos';
 const productData = [
   {
     id: '1',
-    name: 'Cras convallis lacus orc',
+    name: 'university of lahor',
     thumbnail: imgApi[21],
     desc: 'Curabitur egestas consequat lorem, vel fermentum augue porta id.',
     rating: 4,
@@ -13,7 +13,7 @@ const productData = [
   },
   {
     id: '2',
-    name: 'Vivamus sit amet interdum elit',
+    name: 'University of engineering Peshawar',
     thumbnail: imgApi[22],
     desc: 'Maecenas nisl libero, tincidunt id odio id, feugiat vulputate quam.',
     rating: 0,
@@ -46,7 +46,7 @@ const productData = [
   },
   {
     id: '5',
-    name: 'Curabitur egestas consequat lorem',
+    name: 'Abbottabad University of Science and Technology',
     thumbnail: imgApi[25],
     desc: 'Aenean sit amet magna vel magna fringilla fermentum',
     rating: 5,
@@ -57,9 +57,9 @@ const productData = [
   },
   {
     id: '6',
-    name: 'Aenean facilisis vitae purus facilisis semper',
+    name: 'Bachelor of Arts in Business Communication (BA)',
     thumbnail: imgApi[26],
-    desc: 'Vestibulum bibendum nisi eget magna malesuada',
+    desc: 'The Bachelor of Arts in Business Communication program will develop your core skills in writing and research and equip you with an understanding of business communication.',
     rating: 4,
     price: 75,
     prevPrice: 100,
@@ -68,9 +68,9 @@ const productData = [
   },
   {
     id: '7',
-    name: 'Aenean sit amet magna vel magna fringilla fermentum',
+    name: 'Bachelor of Arts in Business Communication(BA)',
     thumbnail: imgApi[27],
-    desc: 'Nam posuere accumsan porta. Integer id orci sed ante tincidunt tincidunt sit amet sed libero.',
+    desc: 'The Master of Business Administration program prepares you to tackle challenging situations and drive the success of your organization through intelligent decision-making.',
     rating: 5,
     price: 20,
     prevPrice: 16,
@@ -79,9 +79,9 @@ const productData = [
   },
   {
     id: '8',
-    name: 'Ut sed eros finibus',
+    name: 'Bachelor of Commerce (BCom)',
     thumbnail: imgApi[28],
-    desc: 'Curabitur egestas consequat lorem, vel fermentum augue porta id.',
+    desc: 'he Bachelor of Commerce program prepares you for a successful career in business or management, where you will contribute constructively to a global economy.',
     rating: 1,
     price: 30,
     prevPrice: 0,
@@ -90,9 +90,9 @@ const productData = [
   },
   {
     id: '9',
-    name: 'Nulla lobortis nunc vitae nisi',
+    name: 'Associate of Arts (AA)',
     thumbnail: imgApi[29],
-    desc: 'Sed mi neque, convallis at ipsum at, blandit pretium enim',
+    desc: 'The Associate of Arts program is an interdisciplinary set of courses that cultivate core skills in writing, communication, research and team performance.',
     rating: 4,
     price: 50,
     prevPrice: 100,
@@ -101,7 +101,7 @@ const productData = [
   },
   {
     id: '10',
-    name: 'Nam posuere accumsan',
+    name: 'Associate of Arts (AA)',
     thumbnail: imgApi[30],
     desc: 'Integer id orci sed ante tincidunt tincidunt sit amet sed libero.',
     rating: 5,
@@ -114,7 +114,7 @@ const productData = [
     id: '11',
     name: 'Cras convallis lacus orc',
     thumbnail: imgApi[37],
-    desc: 'Curabitur egestas consequat lorem, vel fermentum augue porta id.',
+    desc: 'The Associate of Arts program is an interdisciplinary set of courses that cultivate core skills in writing, communication, research and team performance.',
     rating: 4,
     price: 66,
     prevPrice: 200,

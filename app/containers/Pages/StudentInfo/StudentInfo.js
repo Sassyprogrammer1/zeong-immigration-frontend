@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import Grid from '@material-ui/core/Grid';
@@ -6,6 +6,10 @@ import Typography from '@material-ui/core/Typography';
 import Paper from '@material-ui/core/Paper';
 import Button from '@material-ui/core/Button';
 import Box from '@material-ui/core/Box';
+import { DatePicker, MuiPickersUtilsProvider, KeyboardDatePicker } from '@material-ui/pickers';
+import MomentUtils from '@date-io/moment';
+import MenuItem from '@material-ui/core/MenuItem';
+// import DateFnsUtils from '@date-io/date-fns';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -28,8 +32,13 @@ const StudentInfo = () => {
     },
 
   ];
+  const [selectedDate, setSelectedDate] = useState(new Date());
   const classes = useStyles();
   const [currency, setCurrency] = React.useState('EUR');
+
+  const handleDateChange = (date) => {
+    // setSelectedDate(date);
+  };
 
   const handleChange = (event) => {
     setCurrency(event.target.value);
@@ -62,20 +71,18 @@ const StudentInfo = () => {
               error={false}
             />
             <TextField
-              id="outlined-select-currency-native"
+              id="outlined-select-currency"
               select
               label="Gender"
-              value={currency}
-              onChange={handleChange}
-              SelectProps={{
-                native: true,
-              }}
+              value=""
+              onChange={handleDateChange()}
+              margin="normal"
               variant="outlined"
             >
-              {currencies.map((option) => (
-                <option key={option.value} value={option.value}>
+              {currencies.map(option => (
+                <MenuItem key={option.value} value={option.value}>
                   {option.label}
-                </option>
+                </MenuItem>
               ))}
             </TextField>
             <TextField
@@ -85,15 +92,17 @@ const StudentInfo = () => {
               variant="outlined"
               size="small"
             />
-            <TextField
-              label="Date of Brith"
-              id="outlined-size-small"
-              defaultValue=""
-              type="date"
-              variant="outlined"
-              size="small"
 
+            <KeyboardDatePicker
+              label="Date of Birth"
+              format="DD/MM/YYYY"
+              placeholder="10/10/2018"
+              mask={[/\d/, /\d/, '/', /\d/, /\d/, '/', /\d/, /\d/, /\d/, /\d/]}
+              value={selectedDate}
+              onChange={handleDateChange}
+              animateYearScrolling={false}
             />
+
             <TextField
               label="Phone Number"
               id="outlined-size-small"
@@ -276,11 +285,11 @@ const StudentInfo = () => {
         justifyContent: 'end'
       }}>
         <Button variant="contained" color="primary">
-                    submit
+          submit
 
         </Button>
       </Box>
-    </Paper>
+    </Paper >
 
   );
 };

@@ -38,10 +38,11 @@ function ProductCard(props) {
     <Card className={classNames(classes.cardProduct, isWidthUp('sm', width) && list ? classes.cardList : '')}>
       <div className={classes.status}>
         {discount !== '' && (
-          <Chip label={'Discount ' + discount} className={classes.chipDiscount} />
+          <Chip label={'GRADUATE PROGRAM'} className={classes.chipDiscount} />
         )}
         {soldout && (
-          <Chip label="Sold Out" className={classes.chipSold} />
+          <Chip label="
+          UNDERGRADUATE PROGRAM" className={classes.chipSold} />
         )}
       </div>
       <CardMedia

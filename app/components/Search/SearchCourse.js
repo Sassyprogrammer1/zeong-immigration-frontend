@@ -65,12 +65,12 @@ function SearchCourse(props) {
               <div className={classes.search}>
                 <SearchIcon />
               </div>
-              <input className={classes.input} placeholder={intl.formatMessage(messages.placeholder)} onChange={(event) => search(event)} />
+              <input className={classes.input} placeholder="Search Cource" onChange={(event) => search(event)} />
             </div>
           </div>
           <Typography variant="caption" className={classes.result}>
             {getTotalResult(dataProduct)}
-                        &nbsp;
+            &nbsp;
             <FormattedMessage {...messages.result} />
           </Typography>
 
