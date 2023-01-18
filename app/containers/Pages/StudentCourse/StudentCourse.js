@@ -1,84 +1,74 @@
-import React, { useState, useEffect } from 'react';
-import { Helmet } from 'react-helmet';
-import brand from 'enl-api/dummy/brand';
-import { useSelector, useDispatch } from 'react-redux';
-import { SearchCourse, ProductGallery, Notification } from 'enl-components';
-import {
-  fetchAction,
-  addAction,
-  removeAction,
-  checkoutAction,
-  detailAction,
-  searchAction,
-  closeNotifAction
-} from '../Ecommerce/reducers/ecommerceActions';
-import data from '../Ecommerce/api/productData';
-
-function StudentCourse() {
-  // Redux State
-  const keyword = useSelector(state => state.ecommerce.keywordValue);
-  const dataProduct = useSelector(state => state.ecommerce.productList);
-  const dataCart = useSelector(state => state.ecommerce.cart);
-  const productIndex = useSelector(state => state.ecommerce.productIndex);
-  const totalItems = useSelector(state => state.ecommerce.totalItems);
-  const totalPrice = useSelector(state => state.ecommerce.totalPrice);
-  const messageNotif = useSelector(state => state.ecommerce.notifMsg);
-
-  // Dispatcher
-  const fetchData = useDispatch();
-  const search = useDispatch();
-  const handleAddToCart = useDispatch();
-  const removeItem = useDispatch();
-  const showDetail = useDispatch();
-  const checkout = useDispatch();
-  const closeNotif = useDispatch();
-
-  const [listView, setListView] = useState('list');
-
-  useEffect(() => {
-    fetchData(fetchAction(data));
-  }, []);
-
-  const handleSwitchView = (event, value) => {
-    setListView(value);
-  };
-
-  const title = brand.name + ' - Ecommerce';
-  const description = brand.desc;
+import React, { useEffect } from 'react';
+import PropTypes from 'prop-types';
+import { withStyles } from '@material-ui/core/styles';
+import Typography from '@material-ui/core/Typography';
+import Grid from '@material-ui/core/Grid';
+import imgApi from 'enl-api/images/photos';
+import CourseCard from '../../../components/CardPaper/CourseCard';
+const styles = theme => ({
+  divider: {
+    margin: `${theme.spacing(3)}px 0`,
+  },
+});
+function StudentCourse(props) {
+  const { classes } = props;
 
   return (
     <div>
-      <Helmet>
-        <title>{title}</title>
-        <meta name="description" content={description} />
-        <meta property="og:title" content={title} />
-        <meta property="og:description" content={description} />
-        <meta property="twitter:title" content={title} />
-        <meta property="twitter:description" content={description} />
-      </Helmet>
-      <Notification close={() => closeNotif(closeNotifAction)} message={messageNotif} />
-      <SearchCourse
-        dataCart={dataCart}
-        dataProduct={dataProduct}
-        removeItem={(payload) => removeItem(removeAction(payload))}
-        checkout={() => checkout(checkoutAction)}
-        totalItems={totalItems}
-        totalPrice={totalPrice}
-        search={(payload) => search(searchAction(payload))}
-        keyword={keyword}
-        listView={listView}
-        handleSwitchView={handleSwitchView}
-      />
-      <ProductGallery
-        listView={listView}
-        dataProduct={dataProduct}
-        showDetail={(payload) => showDetail(detailAction(payload))}
-        handleAddToCart={(payload) => handleAddToCart(addAction(payload))}
-        productIndex={productIndex}
-        keyword={keyword}
-      />
+
+      <Grid
+        container
+        alignItems="flex-start"
+        justifyContent="center"
+        direction="row"
+        spacing={2}
+      >
+
+        <Grid item md={12}>
+          <CourseCard
+            discount="10%"
+            thumbnail={imgApi[24]}
+            name="Lorem ipsum dolor sit amet"
+            desc="Sed imperdiet enim ligula, vitae viverra justo porta vel. Duis eget felis bibendum, pretium mi sed, placerat ante."
+            rating={5}
+            price={30}
+            prevPrice={20}
+            list
+          />
+        </Grid>
+        <Grid item md={12}>
+          <CourseCard
+            discount="10%"
+            thumbnail={imgApi[24]}
+            name="Lorem ipsum dolor sit amet"
+            desc="Sed imperdiet enim ligula, vitae viverra justo porta vel. Duis eget felis bibendum, pretium mi sed, placerat ante."
+            rating={5}
+            price={30}
+            prevPrice={20}
+            list
+          />
+        </Grid>
+        <Grid item md={12}>
+          <CourseCard
+            discount="10%"
+            thumbnail={imgApi[24]}
+            name="Lorem ipsum dolor sit amet"
+            desc="Sed imperdiet enim ligula, vitae viverra justo porta vel. Duis eget felis bibendum, pretium mi sed, placerat ante."
+            rating={5}
+            price={30}
+            prevPrice={20}
+            list
+          />
+        </Grid>
+
+      </Grid>
+
     </div>
   );
 }
 
-export default StudentCourse;
+StudentCourse.propTypes = {
+  classes: PropTypes.object.isRequired,
+};
+
+export default withStyles(styles)(StudentCourse);
