@@ -86,6 +86,7 @@ function* loginWithEmailSaga(payload) {
 }
 
 function* registerWithEmailSaga(payload) {
+  console.log(payload, "payload")
   try {
     const res = yield api.post('/consultant/register',
       { email: payload.email, password: payload.password });

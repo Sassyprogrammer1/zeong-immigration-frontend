@@ -22,6 +22,7 @@ import history from '../utils/history';
 import authReducer from './modules/authReducer';
 import uiReducer from './modules/uiReducer';
 import initval from './modules/initFormReducer';
+import universityReducer from './modules/universityReducer';
 
 /**
  * Branching reducers to use one reducer for many components
@@ -47,6 +48,7 @@ export default function createReducer(injectedReducers = {}) {
     ui: uiReducer,
     initval,
     authReducer,
+    universityReducer,
     contact,
     contactFullstack,
     email,

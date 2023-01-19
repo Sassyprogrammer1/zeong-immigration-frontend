@@ -30,7 +30,6 @@ export const AuthState = {
   role: null
 };
 
-/* eslint-disable default-case, no-param-reassign */
 const authReducer = (state = AuthState, action = {}) => produce(state, draft => {
   switch (action.type) {
     case LOGIN_REQUEST:
