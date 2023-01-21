@@ -138,7 +138,7 @@ function StudentUniversity() {
         <Toolbar>
 
           <Typography className={classes.title} variant="h6" noWrap>
-            Search University
+
           </Typography>
           <div className={classes.search}>
             <div className={classes.searchIcon} >

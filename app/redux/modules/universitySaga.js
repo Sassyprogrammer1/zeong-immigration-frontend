@@ -22,7 +22,6 @@ function* searchUniversity(data) {
 }
 
 function* getCourse(data) {
-    console.log(data.course, "corse data")
     yield put(getCourseSuccess(data.course))
 
 
