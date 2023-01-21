@@ -68,14 +68,6 @@ function StudentCourse(props) {
 
   const { "courses.major.minor": { hits } } = useSelector((state) => state.universityReducer.courses)
 
-  const { } = hits
-  console.log(hits, "hiittttttttttttttt")
-
-  useEffect(() => {
-
-    // dispatch(getCourseRequest(1))
-  }, [id])
-
   return (
     <div>
       { }
