@@ -1,33 +1,33 @@
-// import produce from "immer";
-// import { LOGIN_FAILURE, LOGIN_REQUEST } from "../constants/authConstants";
+import produce from "immer";
+import { SEARCH_UNIVERSITY_FAIL, SEARCH_UNIVERSITY_REQUEST, SEARCH_UNIVERSITY_SUCCESS } from "../constants/uinversityConstant";
 
 
-// export const UniversityState = {
-//     loading: false,
-//     university: null,
-//     message: null,
+export const UniversityState = {
+    loading: false,
+    university: null,
+    message: null,
 
-// }
+}
 
-// const universityReducer = (state = UniversityState, action = {}) => produce((state, draft) => {
-//     switch (action.type) {
-//         case LOGIN_REQUEST:
-//             draft.loading = true;
-//             draft.message = null;
-//             break;
+const universityReducer = (state = UniversityState, action = {}) => produce((_state, draft) => {
+    switch (action.type) {
+        case SEARCH_UNIVERSITY_REQUEST:
+            draft.loading = true;
+            draft.message = null;
+            break;
 
-//         case LOGIN_REQUEST:
-//             draft.loading = false;
-//             draft.university = action.data;
-//             break;
+        case SEARCH_UNIVERSITY_SUCCESS:
+            draft.loading = false;
+            draft.university = action.data;
+            break;
 
-//         case LOGIN_FAILURE:
-//             draft.loading = false;
-//             draft.message = action.error;
-//         default:
-//             break;
-//     }
+        case SEARCH_UNIVERSITY_FAIL:
+            draft.loading = false;
+            draft.message = action.error;
+        default:
+            break;
+    }
 
-// });
+});
 
-// export default universityReducer;
+export default universityReducer;

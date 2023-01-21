@@ -17,6 +17,11 @@ import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Grid from "@material-ui/core/Grid"
 import Skeleton from '@material-ui/lab/Skeleton';
+import { Link } from "react-router-dom"
+import { Paper } from '@material-ui/core';
+import { useDispatch } from 'react-redux';
+import { getUniversity } from '../../../redux/actions/universityAction';
+// import Button from '@mui/material/Button'
 
 // import Grid from '../../Layouts/Grid';
 
@@ -74,23 +79,31 @@ const useStyles = makeStyles((theme) => ({
       },
     },
   },
+  cardContainer: {
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    margin: theme.spacing(4)
+
+
+  },
   card: {
-    maxWidth: 345,
+    // maxWidth: 345,
     marginTop: theme.spacing(4),
   },
   media: {
-    height: 140,
+    height: 180,
   },
 }));
 
 function StudentUniversity() {
+
   const classes = useStyles();
 
+  const dispatch = useDispatch()
   const [searchval, setsearch] = useState(null)
   const [universityData, setunivertyData] = useState([]);
-  const [loading, setloading] = useState(false)
-
-  console.log({ searchval });
+  const [loading, setloading] = useState(true)
   const handleChange = (e) => {
 
     setloading(true)
@@ -98,21 +111,29 @@ function StudentUniversity() {
     setsearch(e.target.value)
 
   }
-  const fetchUniversity = async () => {
+  const fetchUniversity = async (searchval) => {
     const res = await api.post("/consultant/search", {
 
-      searchQuery: searchval
+      searchQuery: searchval ? searchval : "indemand"
     })
     setunivertyData(res.data.hits)
     setloading(false)
-    console.log(res.data.hits, "university")
+
   }
   useEffect(() => {
-    fetchUniversity();
+
+    fetchUniversity(searchval);
+    dispatch(getUniversity(searchval))
+
+    // fetchUniversity(searchval);
   }, [searchval]);
 
   //handle submite Api call
   const handleSubmit = () => {
+    console.log("appi call")
+    // fetchUniversity(searchval);
+    dispatch(getUniversity(searchval))
+
 
   }
 
@@ -129,7 +150,7 @@ function StudentUniversity() {
             Search University
           </Typography>
           <div className={classes.search}>
-            <div className={classes.searchIcon} onClick={handleSubmit}>
+            <div className={classes.searchIcon} >
               <SearchIcon />
             </div>
             <InputBase
@@ -142,93 +163,113 @@ function StudentUniversity() {
               }}
               inputProps={{ 'aria-label': 'search' }}
             />
+
           </div>
+          <Button variant="contained" onClick={handleSubmit}>Submit</Button>
+          <div></div>
         </Toolbar>
       </AppBar>
+      <div className={classes.cardContainer}>
 
-      <Grid
-        container
-        justifyContent='center'
-        alignItems='center'
-        spacing={4}
+        <Grid
+          container
+          justifyContent='center'
+          alignItems='center'
+          spacing={4}
 
 
-      >
-        {loading ? (
-          <><div>
-            <Skeleton variant="text" />
-            <Skeleton variant="circle" width={40} height={40} />
-            <Skeleton variant="rect" width={210} height={118} />
-          </div><div>
+        >
+          {loading ? (
+            <><div>
               <Skeleton variant="text" />
               <Skeleton variant="circle" width={40} height={40} />
               <Skeleton variant="rect" width={210} height={118} />
             </div><div>
-              <Skeleton variant="text" />
-              <Skeleton variant="circle" width={40} height={40} />
-              <Skeleton variant="rect" width={210} height={118} />
-            </div></>
-        ) : (
-          <>
-            {universityData?.map((uni) => {
+                <Skeleton variant="text" />
+                <Skeleton variant="circle" width={40} height={40} />
+                <Skeleton variant="rect" width={210} height={118} />
+              </div><div>
+                <Skeleton variant="text" />
+                <Skeleton variant="circle" width={40} height={40} />
+                <Skeleton variant="rect" width={210} height={118} />
+              </div></>
+          ) : (
+            <>
+              {universityData?.map((uni) => {
 
-              return (
-                <Grid item lg={4} md={4} sm={8} >
+                return (
+                  <Grid item lg={4} md={4} sm={8} key={uni._id}>
+                    <Paper elevation={2}>
+                      <Card className={classes.Card}>
+                        <CardActionArea>
+                          <CardMedia
+                            className={classes.media}
+                            image="https://images.pexels.com/photos/207692/pexels-photo-207692.jpeg?auto=compress&cs=tinysrgb&w=1600"
+                            title="Contemplative Reptile"
+                          />
+                          <CardContent>
+                            <Typography gutterBottom variant="h5" component="h2">
+                              {uni._source.name}
+                            </Typography>
+                            <Typography variant="body1" color="textSecondary" >
+                              {uni._source.address}
+                            </Typography>
+                            <Typography variant="body2" color="textSecondary" component="p">
+                              Phone Numner:  {uni._source.phoneNumber}
 
-                  <Card className={classes.Card}>
-                    <CardActionArea>
-                      <CardMedia
-                        className={classes.media}
-                        image="https://images.pexels.com/photos/207692/pexels-photo-207692.jpeg?auto=compress&cs=tinysrgb&w=1600"
-                        title="Contemplative Reptile"
-                      />
-                      <CardContent>
-                        <Typography gutterBottom variant="h5" component="h2">
-                          {uni._source.name}
-                        </Typography>
-                        <Typography variant="body1" color="textSecondary" component="p">
-                          {uni._source.address}
-                          Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging
-                          across all continents except Antarctica
-                        </Typography>
-                        <Typography variant="body2" color="textSecondary" component="p">
-                          Phone Numner:  {uni._source.phoneNumber}
+                            </Typography>
+                            <Typography variant="body2" color="textSecondary" component="p">
+                              Email:  {uni._source.admissionEmail}
 
-                        </Typography>
-                        <Typography variant="body2" color="textSecondary" component="p">
-                          Email:  {uni._source.admissionEmail}
+                            </Typography>
+                            <Typography variant="body2" color="textSecondary" component="p">
+                              tuitionRange:  {uni._source.tuitionRange}
 
-                        </Typography>
-                        <Typography variant="body2" color="textSecondary" component="p">
-                          tuitionRange:  {uni._source.tuitionRange}
+                            </Typography>
+                            <Typography variant="body2" color="textSecondary" component="p">
+                              Country:  {uni._type}
 
-                        </Typography>
-                      </CardContent>
-                    </CardActionArea>
-                    <CardActions>
-                      <Button size="small" color="primary">
-                        Visite  Website
-                      </Button>
-                      <Button size="small" color="primary">
-                        Learn More
-                      </Button>
-                    </CardActions>
-                  </Card>
-                </Grid>
-              )
-            })}
-          </>
+                            </Typography>
+                          </CardContent>
+                        </CardActionArea>
+                        <CardActions>
+                          <a href={`${uni._source.websiteURL}`} target="_blank" style={{
+                            margin: "1rem",
+                            textDecoration: "none",
+                            color: 'blue'
+                          }}>
+                            <Button size="small" color="primary">
+                              website
+                            </Button>
+                          </a>
 
-        )}
+                          <Link to={`/app/dashboard/${uni._id}/student-course`} style={{
+                            margin: "1rem",
+                            textDecoration: "none",
+                            color: 'blue'
+                          }}>
+                            <Button size="small" color="primary">
+                              See courses
+                            </Button>
+                          </Link>
+                        </CardActions>
+                      </Card>
+                    </Paper>
+                  </Grid>
+                )
+              })}
+            </>
 
-
-
-
-      </Grid>
+          )}
 
 
 
 
+        </Grid>
+
+
+
+      </div>
 
 
 

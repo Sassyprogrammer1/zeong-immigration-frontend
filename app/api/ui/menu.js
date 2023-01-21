@@ -40,7 +40,7 @@ module.exports = [
       {
         key: 'Course',
         name: 'Course',
-        link: '/app/dashboard/student-course',
+        link: '/app/dashboard/:universityId/student-course',
         icon: 'business',
 
       },

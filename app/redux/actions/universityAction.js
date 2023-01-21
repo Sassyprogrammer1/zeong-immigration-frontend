@@ -1,11 +1,14 @@
 import * as types from "../constants/uinversityConstant"
 
 
-export const getUniversity = (searchQuery) => ({
-    type: types.SEARCH_UNIVERSITY_REQUEST,
-    payload: { searchQuery },
+export const getUniversity = (query) => {
+    console.log(query, "ssss")
+    return {
+        type: types.SEARCH_UNIVERSITY_REQUEST,
+        query,
 
-})
+    }
+}
 
 
 export const getUniversitySuccess = (data) => ({
