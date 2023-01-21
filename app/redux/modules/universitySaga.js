@@ -1,53 +1,44 @@
 import { useDispatch } from 'react-redux';
 import {
-    call, fork, put, take, takeEvery, all
+    call, fork, put, take, all, takeEvery
 } from 'redux-saga/effects';
 import api from '../../api/baseUrl/BaseUrl';
-import { getUniversity, getUniversityFail, getUniversitySuccess } from '../actions/universityAction';
-import { SEARCH_UNIVERSITY_FAIL, SEARCH_UNIVERSITY_REQUEST, SEARCH_UNIVERSITY_SUCCESS } from '../constants/uinversityConstant';
+import { getCourseRequest, getCourseSuccess, getUniversity, getUniversityFail, getUniversitySuccess } from '../actions/universityAction';
+import { GET_COURSE_REQUEST, SEARCH_UNIVERSITY_REQUEST } from '../constants/uinversityConstant';
 
 
 
 function* searchUniversity(data) {
-    console.log(data, "data")
-    disptch({ type: SEARCH_UNIVERSITY_REQUEST, getUniversity })
+
     try {
-        const uni = yield api.post(`/consultant/search`, {
+        const res = yield api.post(`/consultant/search`, {
             searchQuery: data.query
         })
-
-        yield put(getUniversitySuccess(res.data))
-
-
-
-
+        yield put(getUniversitySuccess(res.data.hits))
     } catch (error) {
-        yield put(getUniversityFail(error?.message))
+        yield put(getUniversityFail(error))
 
     }
 }
 
+function* getCourse(data) {
+    console.log(data.course, "corse data")
+    yield put(getCourseSuccess(data.course))
 
-function* syncUniversitySaga() {
-    const res = yield call(getUniversity);
-    while (true) {
-        const { data } = yield take(qurey);
-        if (data) {
-            yield put(getUniversitySuccess(data));
-        } else {
-            yield put(getUniversityFail(data));
-        }
-    }
+
+
 }
+
 
 
 function* universitySaga() {
-    yield fork(syncUniversitySaga)
     yield all([
 
-        yield takeEvery(SEARCH_UNIVERSITY_REQUEST, searchUniversity)
+        yield takeEvery(SEARCH_UNIVERSITY_REQUEST, searchUniversity),
+        yield takeEvery(GET_COURSE_REQUEST, getCourse),
 
-    ])
+
+    ]);
 }
 
 const uniSaga = [

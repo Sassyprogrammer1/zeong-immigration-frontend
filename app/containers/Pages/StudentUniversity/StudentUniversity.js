@@ -19,8 +19,8 @@ import Grid from "@material-ui/core/Grid"
 import Skeleton from '@material-ui/lab/Skeleton';
 import { Link } from "react-router-dom"
 import { Paper } from '@material-ui/core';
-import { useDispatch } from 'react-redux';
-import { getUniversity } from '../../../redux/actions/universityAction';
+import { useDispatch, useSelector } from 'react-redux';
+import { getCourseRequest, getUniversity } from '../../../redux/actions/universityAction';
 // import Button from '@mui/material/Button'
 
 // import Grid from '../../Layouts/Grid';
@@ -94,6 +94,11 @@ const useStyles = makeStyles((theme) => ({
   media: {
     height: 180,
   },
+  productNotFound: {
+    marginTop: theme.spacing(4),
+    padding: theme.spacing(4)
+
+  }
 }));
 
 function StudentUniversity() {
@@ -101,40 +106,23 @@ function StudentUniversity() {
   const classes = useStyles();
 
   const dispatch = useDispatch()
-  const [searchval, setsearch] = useState(null)
-  const [universityData, setunivertyData] = useState([]);
-  const [loading, setloading] = useState(true)
+  // Selector
+
+  const { university, loading } = useSelector((state) => state.universityReducer)
+  const [searchval, setsearch] = useState("")
+
   const handleChange = (e) => {
-
-    setloading(true)
-
     setsearch(e.target.value)
-
   }
-  const fetchUniversity = async (searchval) => {
-    const res = await api.post("/consultant/search", {
 
-      searchQuery: searchval ? searchval : "indemand"
-    })
-    setunivertyData(res.data.hits)
-    setloading(false)
-
-  }
   useEffect(() => {
+    // dispatch(getUniversity(searchval))
 
-    fetchUniversity(searchval);
-    dispatch(getUniversity(searchval))
+  }, [])
 
-    // fetchUniversity(searchval);
-  }, [searchval]);
 
-  //handle submite Api call
   const handleSubmit = () => {
-    console.log("appi call")
-    // fetchUniversity(searchval);
     dispatch(getUniversity(searchval))
-
-
   }
 
 
@@ -179,6 +167,9 @@ function StudentUniversity() {
 
 
         >
+          {/* {university.length <= 0 && loading === false ? (<Paper className={classes.productNotFound} elevation={1}> <Typography gutterBottom variant="h5" component="h2">
+            Search University
+          </Typography></Paper>) : (<></>)} */}
           {loading ? (
             <><div>
               <Skeleton variant="text" />
@@ -195,7 +186,7 @@ function StudentUniversity() {
               </div></>
           ) : (
             <>
-              {universityData?.map((uni) => {
+              {university?.map((uni) => {
 
                 return (
                   <Grid item lg={4} md={4} sm={8} key={uni._id}>
@@ -248,7 +239,7 @@ function StudentUniversity() {
                             textDecoration: "none",
                             color: 'blue'
                           }}>
-                            <Button size="small" color="primary">
+                            <Button size="small" color="primary" onClick={() => dispatch(getCourseRequest(uni?.inner_hits))} >
                               See courses
                             </Button>
                           </Link>

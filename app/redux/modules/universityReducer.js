@@ -1,33 +1,51 @@
-import produce from "immer";
-import { SEARCH_UNIVERSITY_FAIL, SEARCH_UNIVERSITY_REQUEST, SEARCH_UNIVERSITY_SUCCESS } from "../constants/uinversityConstant";
+import produce from 'immer';
+import { GET_COURSE_REQUEST, GET_COURSE_SUCCESS, SEARCH_UNIVERSITY_FAIL, SEARCH_UNIVERSITY_REQUEST, SEARCH_UNIVERSITY_SUCCESS } from '../constants/uinversityConstant';
 
 
-export const UniversityState = {
+export const UniState = {
     loading: false,
-    university: null,
+    university: [],
+    courses: null,
     message: null,
 
-}
+};
 
-const universityReducer = (state = UniversityState, action = {}) => produce((_state, draft) => {
+const universityReducer = (state = UniState, action = {}) => produce(state, draft => {
     switch (action.type) {
         case SEARCH_UNIVERSITY_REQUEST:
             draft.loading = true;
-            draft.message = null;
+            draft.message = draft.university.length <= 0 ? "No University Match" : draft.message;
+
             break;
 
         case SEARCH_UNIVERSITY_SUCCESS:
-            draft.loading = false;
-            draft.university = action.data;
+            draft.loading = false,
+                draft.university = action.data;
             break;
 
         case SEARCH_UNIVERSITY_FAIL:
+
             draft.loading = false;
             draft.message = action.error;
+            break;
+
+        case GET_COURSE_REQUEST:
+
+            draft.loading = true;
+
+            break;
+
+        case GET_COURSE_SUCCESS:
+
+
+            draft.loading = false;
+            draft.courses = action.course;
+
+            break;
+
         default:
             break;
     }
-
 });
 
 export default universityReducer;
