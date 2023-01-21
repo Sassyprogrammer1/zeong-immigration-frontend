@@ -116,9 +116,12 @@ function StudentUniversity() {
   }
 
   useEffect(() => {
-    // dispatch(getUniversity(searchval))
+    if (searchval === "") {
+      dispatch(getUniversity("indemand"))
+    }
 
-  }, [])
+
+  }, [searchval])
 
 
   const handleSubmit = () => {
