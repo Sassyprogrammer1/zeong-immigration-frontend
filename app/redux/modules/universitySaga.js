@@ -29,7 +29,7 @@ function* searchUniversity(data) {
 
 
 function* syncUniversitySaga() {
-    const data = yield call(getUniversity);
+    const res = yield call(getUniversity);
     while (true) {
         const { data } = yield take(qurey);
         if (data) {
@@ -42,6 +42,7 @@ function* syncUniversitySaga() {
 
 
 function* universitySaga() {
+    yield fork(syncUniversitySaga)
     yield all([
 
         yield takeEvery(SEARCH_UNIVERSITY_REQUEST, searchUniversity)
