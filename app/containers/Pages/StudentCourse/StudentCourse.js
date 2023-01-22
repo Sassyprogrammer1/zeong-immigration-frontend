@@ -104,7 +104,7 @@ function StudentCourse(props) {
                   title="Paella dish"
                 />
                 <CardContent>
-                  <Typography variant="body2" color="textSecondary" component="p">
+                  <Typography variant="body1" color="textSecondary" component="p">
                     {course._source.courseName}
                   </Typography>
                   {/* {course?._source?.requirement?.map((details, index) => (
@@ -146,7 +146,7 @@ function StudentCourse(props) {
                       </>
 
                     ))}
-                    <Typography paragraph>Method:</Typography>
+                    {/* <Typography paragraph>Method:</Typography>
                     <Typography paragraph>
                       Heat 1/2 cup of the broth in a pot until simmering, add saffron and set aside for 10
                       minutes.
@@ -158,17 +158,17 @@ function StudentCourse(props) {
                       and chorizo in the pan. Add pimentón, bay leaves, garlic, tomatoes, onion, salt and
                       pepper, and cook, stirring often until thickened and fragrant, about 10 minutes. Add
                       saffron broth and remaining 4 1/2 cups chicken broth; bring to a boil.
-                    </Typography>
-                    <Typography paragraph>
+                    </Typography> */}
+                    {/* <Typography paragraph>
                       Add rice and stir very gently to distribute. Top with artichokes and peppers, and cook
                       without stirring, until most of the liquid is absorbed, 15 to 18 minutes. Reduce heat to
                       medium-low, add reserved shrimp and mussels, tucking them down into the rice, and cook
                       again without stirring, until mussels have opened and rice is just tender, 5 to 7
                       minutes more. (Discard any mussels that don’t open.)
-                    </Typography>
-                    <Typography>
+                    </Typography> */}
+                    {/* <Typography>
                       Set aside off of the heat to let rest for 10 minutes, and then serve.
-                    </Typography>
+                    </Typography> */}
                   </CardContent>
                 </Collapse>
               </Card>
