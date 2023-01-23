@@ -32,7 +32,8 @@ function StudentSearch(props) {
     dataProduct,
     handleSwitchView,
     listView,
-    intl
+    intl,
+    placeholder
   } = props;
   const [anchorEl, setAnchorEl] = useState(null);
 
@@ -110,7 +111,7 @@ StudentSearch.propTypes = {
   dataProduct: PropTypes.array.isRequired,
   handleSwitchView: PropTypes.func.isRequired,
   listView: PropTypes.string.isRequired,
-  intl: PropTypes.object.isRequired
+  intl: PropTypes.object.isRequired,
 };
 
 export default withStyles(styles)(injectIntl(StudentSearch));

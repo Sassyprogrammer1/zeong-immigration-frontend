@@ -329,6 +329,9 @@ const styles = theme => ({
     opacity: 0.4,
     transition: theme.transitions.create('opacity'),
   },
+  deatialButton: {
+    marginTop: `${theme.spacing(4)}px`
+  }
 });
 
 export default styles;

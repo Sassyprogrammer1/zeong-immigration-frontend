@@ -12,8 +12,19 @@ function ProductGallery(props) {
     productIndex,
     keyword,
     listView,
-    showDetail
+    showDetail,
+    universityData
   } = props;
+
+  console.log(universityData, "Ssssssssssssssss")
+
+  universityData.map((university) => {
+    const { _source
+      : { name, phoneNumber, tuitionRange } } = university;
+    console.log(university, name, phoneNumber, tuitionRange, "hahahah")
+
+    return
+  })
 
   const handleDetailOpen = (product) => {
     setOpen(true);
@@ -82,7 +93,8 @@ ProductGallery.propTypes = {
   showDetail: PropTypes.func.isRequired,
   productIndex: PropTypes.number.isRequired,
   keyword: PropTypes.string.isRequired,
-  listView: PropTypes.string.isRequired
+  listView: PropTypes.string.isRequired,
+  universityData: PropTypes.array.isRequired,
 };
 
 export default ProductGallery;

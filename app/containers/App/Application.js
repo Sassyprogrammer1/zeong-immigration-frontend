@@ -37,7 +37,8 @@ import {
   NotFound,
   StudentGender,
   StudentChart, StudentUniversity,
-  StudentCourse
+  StudentCourse,
+  StudentInfo
 } from '../pageListAsync';
 
 function Application(props) {
@@ -56,7 +57,10 @@ function Application(props) {
         <Route path="/app/dashboard/student-university" component={StudentUniversity} />
 
         {/* StudentUniversity */}
-        <Route path="/app/dashboard/student-course" component={StudentCourse} />
+        <Route path="/app/dashboard/:universityId/student-course" component={StudentCourse} />
+
+        {/* student form */}
+        <Route path="/app/dashboard/student-info" component={StudentInfo} />
 
         { /* Home */}
         <Route exact path="/app" component={AnalyticDashboard} />
