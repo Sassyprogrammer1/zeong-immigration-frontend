@@ -116,9 +116,9 @@ function StudentUniversity() {
   }
 
   useEffect(() => {
-    if (searchval === "") {
-      dispatch(getUniversity("indemand"))
-    }
+    // if (searchval === "") {
+    //   dispatch(getUniversity("indemand"))
+    // }
 
 
   }, [searchval])
@@ -170,9 +170,9 @@ function StudentUniversity() {
 
 
         >
-          {/* {university.length <= 0 && loading === false ? (<Paper className={classes.productNotFound} elevation={1}> <Typography gutterBottom variant="h5" component="h2">
+          {university.length <= 0 && loading === false ? (<Paper className={classes.productNotFound} elevation={0}> <Typography gutterBottom variant="h5" component="h2">
             Search University
-          </Typography></Paper>) : (<></>)} */}
+          </Typography></Paper>) : (<></>)}
           {loading ? (
             <><div>
               <Skeleton variant="text" />
