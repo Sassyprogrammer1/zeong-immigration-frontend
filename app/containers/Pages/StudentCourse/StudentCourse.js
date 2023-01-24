@@ -55,10 +55,18 @@ const useStyles = makeStyles((theme) => ({
 function StudentCourse(props) {
   const classes = useStyles();
 
-  const [expanded, setExpanded] = React.useState(false);
+  const [expanded, setExpanded] = React.useState({
+    open: false,
+    index: null,
+  });
 
-  const handleExpandClick = () => {
-    setExpanded(!expanded);
+  const handleExpandClick = (index) => {
+    setExpanded({
+      open: !expanded.open,
+      index
+
+
+    });
   };
 
   const dispatch = useDispatch()
@@ -126,16 +134,16 @@ function StudentCourse(props) {
                   </IconButton> */}
                   <IconButton
                     className={clsx(classes.expand, {
-                      [classes.expandOpen]: expanded,
+                      [classes.expandOpen]: expanded.open,
                     })}
-                    onClick={handleExpandClick}
-                    aria-expanded={expanded}
+                    onClick={() => handleExpandClick(index)}
+                    aria-expanded={expanded.open}
                     aria-label="show more"
                   >
                     <ExpandMoreIcon />
                   </IconButton>
                 </CardActions>
-                <Collapse in={expanded} timeout="auto" unmountOnExit>
+                <Collapse in={expanded.open && expanded.index === index} timeout="auto" unmountOnExit>
                   <CardContent>
 
                     {course?._source?.requirement?.map((details, index) => (
