@@ -1,5 +1,5 @@
 import produce from 'immer';
-import { GET_COURSE_REQUEST, GET_COURSE_SUCCESS, SEARCH_UNIVERSITY_FAIL, SEARCH_UNIVERSITY_REQUEST, SEARCH_UNIVERSITY_SUCCESS } from '../constants/uinversityConstant';
+import { GET_COURSE_REQUEST, GET_COURSE_SUCCESS, SEARCH_UNIVERSITY_FAIL, SEARCH_UNIVERSITY_REQUEST, SEARCH_UNIVERSITY_SUCCESS, SEND_STUDENT_INFO_FAIL, SEND_STUDENT_INFO_REQUEST, SEND_STUDENT_INFO_SUCCESS } from '../constants/uinversityConstant';
 
 
 export const UniState = {
@@ -7,6 +7,7 @@ export const UniState = {
     university: [],
     courses: null,
     message: null,
+    studentData: null
 
 };
 
@@ -40,6 +41,29 @@ const universityReducer = (state = UniState, action = {}) => produce(state, draf
 
             draft.loading = false;
             draft.courses = action.course;
+
+            break;
+
+        // studnet info form
+        case SEND_STUDENT_INFO_REQUEST:
+            draft.loading = true;
+            break;
+        case SEND_STUDENT_INFO_SUCCESS:
+
+
+            draft.loading = false;
+            draft.studentData = action.data;
+            darft.message = "student Create succesfully";
+
+
+            break;
+
+        case SEND_STUDENT_INFO_FAIL:
+
+
+            draft.loading = false;
+            draft.message = action.error
+
 
             break;
 

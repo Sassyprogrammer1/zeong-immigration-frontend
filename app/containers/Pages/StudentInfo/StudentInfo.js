@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import Grid from '@material-ui/core/Grid';
@@ -9,6 +9,11 @@ import Box from '@material-ui/core/Box';
 import { DatePicker, MuiPickersUtilsProvider, KeyboardDatePicker } from '@material-ui/pickers';
 import MomentUtils from '@date-io/moment';
 import MenuItem from '@material-ui/core/MenuItem';
+import moment from 'moment';
+import { useDispatch } from 'react-redux';
+import { studentInfoSend } from '../../../redux/actions/universityAction';
+import { useSelector } from 'react-redux';
+import { CircularProgress } from '@material-ui/core';
 // import DateFnsUtils from '@date-io/date-fns';
 
 const useStyles = makeStyles((theme) => ({
@@ -21,6 +26,10 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const StudentInfo = () => {
+
+  const dispatch = useDispatch()
+  const { loading, message, studentData } = useSelector((state) => state.universityReducer)
+
   const currencies = [
     {
       value: 'Male',
@@ -35,10 +44,47 @@ const StudentInfo = () => {
   const [selectedDate, setSelectedDate] = useState(new Date());
   const classes = useStyles();
   const [currency, setCurrency] = React.useState('EUR');
+  const [formValue, setFormValue] = useState({
+    Name: "",
+    Gender: "",
+    Title: "",
+    Dob: moment(selectedDate).format("DD/MM/YYYY"),
+    Phone: "",
+    Email: "",
+    Address: "",
+    PostalCode: null,
+    Networking: "",
+    Budget: 2000,
+    EasyToGetIn: "",
+    Location: "",
+    ImmigrationOriented: "",
+    Employment: "",
+    OptionRange: "",
+    Interests: "",
+    Direction: "",
+    CurrentMajor: "",
+    CurrentDegree: "",
+    EnglishLevel: "",
+    OtherRewards: "",
+    Scores: { "low": "" }
+  })
+
+
+
+  useEffect(() => {
+
+
+    setFormValue(studentData ? studentData : formValue);
+  }, [])
+
 
   const handleDateChange = (date) => {
-    // setSelectedDate(date);
+    setSelectedDate(date);
+
   };
+
+
+
 
   const handleChange = (event) => {
     setCurrency(event.target.value);
@@ -66,6 +112,8 @@ const StudentInfo = () => {
               id="outlined-size-small"
               defaultValue=""
               type="text"
+              value={formValue.Name}
+              onChange={(e) => setFormValue({ ...formValue, Name: e.target.value })}
               variant="outlined"
               size="small"
               error={false}
@@ -74,8 +122,9 @@ const StudentInfo = () => {
               id="outlined-select-currency"
               select
               label="Gender"
-              value=""
-              onChange={handleDateChange()}
+              value={formValue.Gender}
+              onChange={(e) => setFormValue({ ...formValue, Gender: e.target.value })}
+
               margin="normal"
               variant="outlined"
             >
@@ -91,7 +140,11 @@ const StudentInfo = () => {
               defaultValue=""
               variant="outlined"
               size="small"
+              placeholder='Mr./Miss'
+              value={formValue.Title}
+              onChange={(e) => setFormValue({ ...formValue, Title: e.target.value })}
             />
+
 
             <KeyboardDatePicker
               label="Date of Birth"
@@ -99,7 +152,10 @@ const StudentInfo = () => {
               placeholder="10/10/2018"
               mask={[/\d/, /\d/, '/', /\d/, /\d/, '/', /\d/, /\d/, /\d/, /\d/]}
               value={selectedDate}
-              onChange={handleDateChange}
+              onChange={(data) => handleDateChange(data)}
+
+
+
               animateYearScrolling={false}
             />
 
@@ -110,6 +166,8 @@ const StudentInfo = () => {
               type="number"
               variant="outlined"
               size="small"
+              value={formValue.Phone}
+              onChange={(e) => setFormValue({ ...formValue, Phone: e.target.value })}
 
             />
             <TextField
@@ -119,6 +177,8 @@ const StudentInfo = () => {
               type="email"
               variant="outlined"
               size="small"
+              value={formValue.Email}
+              onChange={(e) => setFormValue({ ...formValue, Email: e.target.value })}
 
             />
             <TextField
@@ -128,6 +188,20 @@ const StudentInfo = () => {
               type="data"
               variant="outlined"
               size="small"
+              value={formValue.Address}
+              onChange={(e) => setFormValue({ ...formValue, Address: e.target.value })}
+
+            />
+
+            <TextField
+              label="Emplyement"
+              id="outlined-size-small"
+              defaultValue=""
+              type="text"
+              variant="outlined"
+              size="small"
+              value={formValue.Employment}
+              onChange={(e) => setFormValue({ ...formValue, Employment: e.target.value })}
 
             />
 
@@ -145,6 +219,8 @@ const StudentInfo = () => {
               type="number"
               variant="outlined"
               size="small"
+              value={formValue.PostalCode}
+              onChange={(e) => setFormValue({ ...formValue, PostalCode: e.target.value })}
 
             />
             <TextField
@@ -154,6 +230,8 @@ const StudentInfo = () => {
               type="text"
               variant="outlined"
               size="small"
+              value={formValue.Networking}
+              onChange={(e) => setFormValue({ ...formValue, Networking: e.target.value })}
 
             />
             <TextField
@@ -163,6 +241,8 @@ const StudentInfo = () => {
               type="number"
               variant="outlined"
               size="small"
+              value={formValue.Budget}
+              onChange={(e) => setFormValue({ ...formValue, Budget: e.target.value })}
 
             />
 
@@ -173,6 +253,8 @@ const StudentInfo = () => {
               type="text"
               variant="outlined"
               size="small"
+              value={formValue.EasyToGetIn}
+              onChange={(e) => setFormValue({ ...formValue, EasyToGetIn: e.target.value })}
 
             />
             <TextField
@@ -182,6 +264,9 @@ const StudentInfo = () => {
               type="text"
               variant="outlined"
               size="small"
+              value={formValue.Location}
+              onChange={(e) => setFormValue({ ...formValue, Location: e.target.value })}
+
 
             />
             <TextField
@@ -191,8 +276,12 @@ const StudentInfo = () => {
               type="text"
               variant="outlined"
               size="small"
+              value={formValue.ImmigrationOriented}
+              onChange={(e) => setFormValue({ ...formValue, ImmigrationOriented: e.target.value })}
 
             />
+
+
             <TextField
               label="OptionRange"
               id="outlined-size-small"
@@ -200,6 +289,8 @@ const StudentInfo = () => {
               type="text"
               variant="outlined"
               size="small"
+              value={formValue.OptionRange}
+              onChange={(e) => setFormValue({ ...formValue, OptionRange: e.target.value })}
 
             />
 
@@ -218,6 +309,8 @@ const StudentInfo = () => {
               type="text"
               variant="outlined"
               size="small"
+              value={formValue.Interests}
+              onChange={(e) => setFormValue({ ...formValue, Interests: e.target.value })}
 
             />
             <TextField
@@ -227,6 +320,8 @@ const StudentInfo = () => {
               type="text"
               variant="outlined"
               size="small"
+              value={formValue.Direction}
+              onChange={(e) => setFormValue({ ...formValue, Direction: e.target.value })}
 
             />
             <TextField
@@ -236,7 +331,8 @@ const StudentInfo = () => {
               type="text"
               variant="outlined"
               size="small"
-
+              value={formValue.CurrentMajor}
+              onChange={(e) => setFormValue({ ...formValue, CurrentMajor: e.target.value })}
             />
             <TextField
               label="Current Degree"
@@ -246,6 +342,8 @@ const StudentInfo = () => {
               variant="outlined"
               size="small"
 
+              value={formValue.CurrentDegree}
+              onChange={(e) => setFormValue({ ...formValue, CurrentDegree: e.target.value })}
             />
             <TextField
               label="EnglishLevel"
@@ -255,6 +353,9 @@ const StudentInfo = () => {
               variant="outlined"
               size="small"
 
+              value={formValue.EnglishLevel}
+              onChange={(e) => setFormValue({ ...formValue, EnglishLevel: e.target.value })}
+
             />
             <TextField
               label="OtherRewards"
@@ -263,6 +364,8 @@ const StudentInfo = () => {
               type="text"
               variant="outlined"
               size="small"
+              value={formValue.OtherRewards}
+              onChange={(e) => setFormValue({ ...formValue, OtherRewards: e.target.value })}
 
             />
             <TextField
@@ -272,6 +375,8 @@ const StudentInfo = () => {
               type="text"
               variant="outlined"
               size="small"
+              value={formValue.Scores.low}
+              onChange={(e) => setFormValue({ ...formValue, Scores: { "low": e.target.value } })}
 
             />
 
@@ -284,8 +389,9 @@ const StudentInfo = () => {
         display: 'flex',
         justifyContent: 'end'
       }}>
-        <Button variant="contained" color="primary">
-          submit
+        <Button variant="contained" color="primary"
+          onClick={() => dispatch(studentInfoSend(formValue))}>
+          submit {loading && <CircularProgress color="secondary" />}
 
         </Button>
       </Box>
@@ -293,5 +399,10 @@ const StudentInfo = () => {
 
   );
 };
+
+
+// StudentInfo = reduxForm({
+//   form: 'StudentForm'
+// })(ContactForm)
 
 export default StudentInfo;

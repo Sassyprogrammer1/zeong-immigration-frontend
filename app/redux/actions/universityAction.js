@@ -11,7 +11,6 @@ export const getUniversity = (query) => {
 
 
 export const getUniversitySuccess = (data) => {
-    console.log(data, "dataddddddddddddddddddd")
 
     return {
         type: types.SEARCH_UNIVERSITY_SUCCESS,
@@ -43,6 +42,31 @@ export const getCourseSuccess = (course) => {
     return {
         type: types.GET_COURSE_SUCCESS,
         course
+
+    }
+}
+
+export const studentInfoSend = (data) => {
+    return {
+        type: types.SEND_STUDENT_INFO_REQUEST,
+        data
+
+    }
+}
+
+export const studentInfoSuccess = (data) => {
+
+    return {
+        type: types.SEND_STUDENT_INFO_SUCCESS,
+        data
+
+    }
+}
+export const studentInfoFail = (error) => {
+
+    return {
+        type: types.SEND_STUDENT_INFO_FAIL,
+        error
 
     }
 }
