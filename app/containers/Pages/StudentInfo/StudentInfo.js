@@ -10,10 +10,11 @@ import { DatePicker, MuiPickersUtilsProvider, KeyboardDatePicker } from '@materi
 import MomentUtils from '@date-io/moment';
 import MenuItem from '@material-ui/core/MenuItem';
 import moment from 'moment';
-import { useDispatch } from 'react-redux';
-import { studentInfoSend } from '../../../redux/actions/universityAction';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+
 import { CircularProgress } from '@material-ui/core';
+import { number } from 'prop-types';
+import { studentInfoSend } from '../../../redux/actions/universityAction';
 // import DateFnsUtils from '@date-io/date-fns';
 
 const useStyles = makeStyles((theme) => ({
@@ -26,9 +27,8 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const StudentInfo = () => {
-
-  const dispatch = useDispatch()
-  const { loading, message, studentData } = useSelector((state) => state.universityReducer)
+  const dispatch = useDispatch();
+  const { loading, message, studentData } = useSelector((state) => state.universityReducer);
 
   const currencies = [
     {
@@ -45,46 +45,39 @@ const StudentInfo = () => {
   const classes = useStyles();
   const [currency, setCurrency] = React.useState('EUR');
   const [formValue, setFormValue] = useState({
-    Name: "",
-    Gender: "",
-    Title: "",
-    Dob: moment(selectedDate).format("DD/MM/YYYY"),
-    Phone: "",
-    Email: "",
-    Address: "",
-    PostalCode: null,
-    Networking: "",
-    Budget: 2000,
-    EasyToGetIn: "",
-    Location: "",
-    ImmigrationOriented: "",
-    Employment: "",
-    OptionRange: "",
-    Interests: "",
-    Direction: "",
-    CurrentMajor: "",
-    CurrentDegree: "",
-    EnglishLevel: "",
-    OtherRewards: "",
-    Scores: { "low": "" }
-  })
+    Name: '',
+    Gender: '',
+    Title: '',
+    Dob: moment(selectedDate).format('DD/MM/YYYY'),
+    Phone: '',
+    Email: '',
+    Address: '',
+    PostalCode: number,
+    Networking: '',
+    Budget: number,
+    EasyToGetIn: '',
+    Location: '',
+    ImmigrationOriented: '',
+    Employment: '',
+    OptionRange: '',
+    Interests: '',
+    Direction: '',
+    CurrentMajor: '',
+    CurrentDegree: '',
+    EnglishLevel: '',
+    OtherRewards: '',
+    Scores: { low: '' }
+  });
 
-
+  console.log(formValue);
 
   useEffect(() => {
-
-
-    setFormValue(studentData ? studentData : formValue);
-  }, [])
-
+    setFormValue(studentData || formValue);
+  }, []);
 
   const handleDateChange = (date) => {
     setSelectedDate(date);
-
   };
-
-
-
 
   const handleChange = (event) => {
     setCurrency(event.target.value);
@@ -145,7 +138,6 @@ const StudentInfo = () => {
               onChange={(e) => setFormValue({ ...formValue, Title: e.target.value })}
             />
 
-
             <KeyboardDatePicker
               label="Date of Birth"
               format="DD/MM/YYYY"
@@ -153,8 +145,6 @@ const StudentInfo = () => {
               mask={[/\d/, /\d/, '/', /\d/, /\d/, '/', /\d/, /\d/, /\d/, /\d/]}
               value={selectedDate}
               onChange={(data) => handleDateChange(data)}
-
-
 
               animateYearScrolling={false}
             />
@@ -215,7 +205,7 @@ const StudentInfo = () => {
             <TextField
               label="PostalCode"
               id="outlined-size-small"
-              defaultValue=""
+              defaultValue={null}
               type="number"
               variant="outlined"
               size="small"
@@ -267,7 +257,6 @@ const StudentInfo = () => {
               value={formValue.Location}
               onChange={(e) => setFormValue({ ...formValue, Location: e.target.value })}
 
-
             />
             <TextField
               label="ImmigrationOriented"
@@ -280,7 +269,6 @@ const StudentInfo = () => {
               onChange={(e) => setFormValue({ ...formValue, ImmigrationOriented: e.target.value })}
 
             />
-
 
             <TextField
               label="OptionRange"
@@ -376,7 +364,7 @@ const StudentInfo = () => {
               variant="outlined"
               size="small"
               value={formValue.Scores.low}
-              onChange={(e) => setFormValue({ ...formValue, Scores: { "low": e.target.value } })}
+              onChange={(e) => setFormValue({ ...formValue, Scores: { low: e.target.value } })}
 
             />
 
@@ -391,7 +379,7 @@ const StudentInfo = () => {
       }}>
         <Button variant="contained" color="primary"
           onClick={() => dispatch(studentInfoSend(formValue))}>
-          submit {loading && <CircularProgress color="secondary" />}
+          {loading ? <CircularProgress color="secondary" fontSize="small" /> : 'submit'}
 
         </Button>
       </Box>
@@ -399,7 +387,6 @@ const StudentInfo = () => {
 
   );
 };
-
 
 // StudentInfo = reduxForm({
 //   form: 'StudentForm'

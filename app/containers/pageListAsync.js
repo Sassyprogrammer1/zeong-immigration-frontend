@@ -2,6 +2,20 @@ import React from 'react';
 import Loading from 'enl-components/Loading';
 import loadable from '../utils/loadable';
 
+// consultant Pages
+export const ConsultantDashboard = loadable(() => import('./Pages/CunsultantDashboard/ConsultantDashboard'), {
+  fallback: <Loading />,
+});
+export const Ranking = loadable(() => import('./Pages/ConsultantRanking/Ranking'), {
+  fallback: <Loading />,
+});
+export const Employment = loadable(() => import('./Pages/ConsultantEmployment/Employment'), {
+  fallback: <Loading />,
+});
+export const Location = loadable(() => import('./Pages/consultantFaculty/Location'), {
+  fallback: <Loading />,
+});
+
 // students Pages
 export const StudentGender = loadable(() => import('./Pages/Students/StudentGender'), {
   fallback: <Loading />,
