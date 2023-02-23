@@ -3,46 +3,30 @@ import React from 'react';
 import '../styles.css';
 
 const Tabels = (props) => {
-  const { tableTitle } = props;
+  const { tableImg, UniData } = props;
   return (
     <div className='table-container'>
       <div className="title-container">
-        <h2>{tableTitle}</h2>
+
+        <img src={tableImg} alt="hello" />
 
       </div>
-      <table>
 
-        <tr>
-          <td><Button variant="contained" color="secondary">
-                        toranto
-          </Button></td>
-          <td>8</td>
+      {UniData?.map((uni, index) => (
+        <>
+          <div className='table-row'>
+            <button style={{ background: `${uni?.color}` }}>{uni?.name}</button>
+            <p>  {index + 1}</p>
 
-        </tr>
-        <tr>
-          <td><Button variant="contained" color="secondary">
-                        toranto
-          </Button></td>
-          <td>15 </td>
+          </div>
+          <div className='divider'></div>
 
-        </tr>
-        <tr>
-          <td><Button variant="contained" color="secondary">
-                        toranto
-          </Button></td>
-          <td>8</td>
+        </>
 
-        </tr>
-        <tr>
-          <td><Button variant="contained" color="secondary">
-                        toranto
-          </Button></td>
-          <td>8</td>
+      ))
+      }
 
-        </tr>
-
-      </table>
-    </div>
+    </div >
   );
 };
 
