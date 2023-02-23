@@ -39,14 +39,14 @@ const Ranking = (props) => {
   };
 
   const computerScience = [
-    'UBC',
-    'Toronto',
-    'Waterloo',
-    'McGill',
-    'Alberta',
-    'Montréal',
-    'Simon Fraser',
-    'Ottawa',
+    { name: 'Alberta', color: ' #339933' },
+    { name: 'Western', color: '#33FF66' },
+    { name: 'Queen', color: ' #99FF99 ' },
+    { name: 'York', color: ' #FFCC66 ' },
+    { name: 'McGill', color: ' #CC9900 ' },
+    { name: 'Ottawa', color: ' #CC9966' },
+    { name: 'UBC', color: ' #CC9999' },
+    { name: 'Toronto', color: ' #CC6600' },
   ];
 
   const canadaRanking = [
@@ -62,14 +62,14 @@ const Ranking = (props) => {
   ];
 
   const facultyEducation = [
-    'UBC',
-    'Toronto',
-    'Alberta',
-    'Western',
-    'Queen',
-    'York',
-    'McGill',
-    'Ottawa',
+    { name: 'Alberta', color: ' #339933' },
+    { name: 'Western', color: '#33FF66' },
+    { name: 'Queen', color: ' #99FF99 ' },
+    { name: 'York', color: ' #FFCC66 ' },
+    { name: 'McGill', color: ' #CC9900 ' },
+    { name: 'Ottawa', color: ' #CC9966' },
+    { name: 'UBC', color: ' #CC9999' },
+    { name: 'Toronto', color: ' #CC6600' },
   ];
 
   return (

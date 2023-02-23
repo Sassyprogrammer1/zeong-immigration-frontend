@@ -51,7 +51,7 @@ export const data = {
 
 const options = {
   responsive: true,
-  // aspectRatio: 1 | 2,
+  aspectRatio: 1 | 2,
   plugins: {
     legend: {
       display: false
