@@ -1,7 +1,11 @@
+import Button from '@material-ui/core/Button';
 import React from 'react';
+import { useHistory } from 'react-router';
 import './styles.css';
 
 const Employment = () => {
+
+  const history = useHistory();
   const images = [
     { name: 'Agriculture', imgUlr: '/assets/employment-icons/argriculture.PNG' },
     { name: 'Art', imgUlr: '/assets/employment-icons/art.PNG' },
@@ -18,27 +22,34 @@ const Employment = () => {
   ];
 
   return (
+    <>
+      <div className='employment-btn'>
+        <Button variant="contained" color="primary" onClick={() => history.goBack()}>
+          back
 
-    <div className='emplyemnt-container'>
-      <div className='employment-title'>
-        <h1>EMPLOYMENT</h1>
+        </Button>
+      </div>
+      <div className='emplyemnt-container'>
+        <div className='employment-title'>
+          <h1>EMPLOYMENT</h1>
+
+        </div>
+        <p>Occupations that will inspire you for life</p>
+
+        <div className='icon-container'>
+          {
+            images.map((item) => (
+              <div className='card'>
+                <img src={item?.imgUlr} alt={item.name} />
+                <h4>{item.name}</h4>
+              </div>
+            ))
+          }
+
+        </div>
 
       </div>
-      <p>Occupations that will inspire you for life</p>
-
-      <div className='icon-container'>
-        {
-          images.map((item) => (
-            <div className='card'>
-              <img src={item?.imgUlr} alt={item.name} />
-              <h4>{item.name}</h4>
-            </div>
-          ))
-        }
-
-      </div>
-
-    </div>
+    </>
   );
 };
 

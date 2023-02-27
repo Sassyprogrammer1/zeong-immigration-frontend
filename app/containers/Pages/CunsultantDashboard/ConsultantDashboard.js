@@ -4,20 +4,19 @@ import {
 } from 'chart.js';
 import { getElementAtEvent, Pie } from 'react-chartjs-2';
 import { useHistory } from 'react-router';
-// import ChartDataLabels from 'chartjs-plugin-datalabels';
+import { LabelPluginProvider } from './LabelsPluginProvider';
+import plugin from 'chartjs-plugin-datalabels';
+import "./styles.css"
 
 ChartJS.register(ArcElement, Tooltip, Legend,
-  // ChartDataLabels,
 
 );
 
-// console.log(ChartDataLabels, 'ChartDataLabels');
 
 export const data = {
   labels: ['Ranking', 'Employement', 'Location', 'Not Working', 'Intrests', 'Budget', 'Programs', 'imigration'],
   datasets: [
     {
-      // label: '# of Votes',
       data: [60, 60, 60, 60, 60, 60],
       backgroundColor: [
 
@@ -47,20 +46,29 @@ export const data = {
   ],
 };
 
-// console.log(ChartDataLabels, "ChartDataLabels")
+
 
 const options = {
   responsive: true,
   aspectRatio: 1 | 2,
+
   plugins: {
+    tooltip: {
+      enabled: false
+    },
     legend: {
       display: false
     },
+    labels: {
+      render: (args) => {
+        return args.label
+      }
+    }
   }
+
 };
 
 const ConsultantDashboard = () => {
-  // console.log(Tooltip)
 
   const history = useHistory();
 
@@ -69,19 +77,18 @@ const ConsultantDashboard = () => {
     if (getElementAtEvent(chartRef.current, event).length > 0) {
       const dataSetIndexNum = getElementAtEvent(chartRef.current, event)[0].datasetIndex;
       const dataPoint = getElementAtEvent(chartRef.current, event)[0].index;
-      console.log(getElementAtEvent(chartRef.current, event));
-      console.log(data.datasets[dataSetIndexNum].link[dataPoint]);
-
       history.push(data.datasets[dataSetIndexNum].link[dataPoint]);
     }
   };
   return (
 
     <div className='pie-chart-container'>
-      <Pie data={data} options={options}
-        onClick={onClick}
-        ref={chartRef}
-      />
+      <LabelPluginProvider>
+        <Pie data={data} options={options}
+          onClick={onClick}
+          ref={chartRef}
+        />
+      </LabelPluginProvider>
 
     </div>
   );

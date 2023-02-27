@@ -3454,7 +3454,12 @@
   "resolved" "https://registry.npmjs.org/chardet/-/chardet-0.7.0.tgz"
   "version" "0.7.0"
 
-"chart.js@^4.1.1", "chart.js@^4.2.0", "chart.js@>=3.0.0":
+"chart.js-plugin-labels-dv@^3.3.0":
+  "integrity" "sha512-C+TPXqRgyW3KlOFEYBqCyaNLCbAsg5Nq6DZdDmmpyqCals9idtc3+FIuBCevcGqi20YeiAFe3BBeRhtgMrC+/g=="
+  "resolved" "https://registry.npmjs.org/chart.js-plugin-labels-dv/-/chart.js-plugin-labels-dv-3.3.0.tgz"
+  "version" "3.3.0"
+
+"chart.js@^3.9.1", "chart.js@^4.1.1", "chart.js@^4.2.0", "chart.js@>=3.0.0":
   "integrity" "sha512-wbtcV+QKeH0F7gQZaCJEIpsNriFheacouJQTVIjITi3eQA8bTlIBoknz0+dgV79aeKLNMAX+nDslIVE/nJ3rzA=="
   "resolved" "https://registry.npmjs.org/chart.js/-/chart.js-4.2.0.tgz"
   "version" "4.2.0"
