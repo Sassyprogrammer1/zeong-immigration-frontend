@@ -116,9 +116,9 @@ function StudentUniversity() {
   }
 
   useEffect(() => {
-    if (searchval === "") {
-      dispatch(getUniversity("indemand"))
-    }
+    // if (searchval === "") {
+    //   dispatch(getUniversity("indemand"))
+    // }
 
 
   }, [searchval])
@@ -170,23 +170,33 @@ function StudentUniversity() {
 
 
         >
-          {/* {university.length <= 0 && loading === false ? (<Paper className={classes.productNotFound} elevation={1}> <Typography gutterBottom variant="h5" component="h2">
+          {university.length <= 0 && loading === false ? (<Paper className={classes.productNotFound} elevation={0}> <Typography gutterBottom variant="h5" component="h2">
             Search University
-          </Typography></Paper>) : (<></>)} */}
+          </Typography></Paper>) : (<></>)}
           {loading ? (
-            <><div>
-              <Skeleton variant="text" />
-              <Skeleton variant="circle" width={40} height={40} />
-              <Skeleton variant="rect" width={210} height={118} />
-            </div><div>
-                <Skeleton variant="text" />
-                <Skeleton variant="circle" width={40} height={40} />
-                <Skeleton variant="rect" width={210} height={118} />
-              </div><div>
-                <Skeleton variant="text" />
-                <Skeleton variant="circle" width={40} height={40} />
-                <Skeleton variant="rect" width={210} height={118} />
-              </div></>
+            <>
+              <Grid item lg={4} md={4} sm={8}>
+                <div>
+                  <Skeleton variant="text" />
+                  <Skeleton variant="circle" width={40} height={40} />
+                  <Skeleton variant="rect" width={210} height={118} />
+                </div>
+              </Grid>
+              <Grid item lg={4} md={4} sm={8}>
+                <div>
+                  <Skeleton variant="text" />
+                  <Skeleton variant="circle" width={40} height={40} />
+                  <Skeleton variant="rect" width={210} height={118} />
+                </div>
+              </Grid>
+              <Grid item lg={4} md={4} sm={8}>
+                <div>
+                  <Skeleton variant="text" />
+                  <Skeleton variant="circle" width={40} height={40} />
+                  <Skeleton variant="rect" width={210} height={118} />
+                </div>
+              </Grid>
+            </>
           ) : (
             <>
               {university?.map((uni) => {

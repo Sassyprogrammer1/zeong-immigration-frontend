@@ -38,7 +38,11 @@ import {
   StudentGender,
   StudentChart, StudentUniversity,
   StudentCourse,
-  StudentInfo
+  StudentInfo,
+  ConsultantDashboard,
+  Ranking,
+  Employment,
+  Location
 } from '../pageListAsync';
 
 function Application(props) {
@@ -48,6 +52,12 @@ function Application(props) {
   return (
     <Dashboard history={history} changeMode={changeMode}>
       <Switch>
+        {/* consultant Dashboard */}
+        <Route exact path="/app/consultant/dashboard" component={ConsultantDashboard} />
+        <Route exact path="/app/consultant/ranking" component={Ranking} />
+        <Route exact path="/app/consultant/employment" component={Employment} />
+        <Route exact path="/app/consultant/location" component={Location} />
+
         {/* Student */}
         <Route exact path="/app/dashboard/gender" component={StudentGender} />
         {/* Student chart */}

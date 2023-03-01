@@ -37,13 +37,7 @@ module.exports = [
         icon: 'business',
 
       },
-      {
-        key: 'Course',
-        name: 'Course',
-        link: '/app/dashboard/:universityId/student-course',
-        icon: 'business',
 
-      },
       {
         key: 'landing_page',
         name: 'Landing Page',
@@ -156,6 +150,22 @@ module.exports = [
       }
     ]
   },
+
+  {
+    key: 'Consultant',
+    name: 'Consultant',
+    icon: 'important_devices',
+    child: [
+
+      {
+        key: 'consultant',
+        name: 'Dashboard',
+        link: '/app/consultant/dashboard',
+
+      },
+    ]
+  },
+
   {
     key: 'apps',
     name: 'Applications',
