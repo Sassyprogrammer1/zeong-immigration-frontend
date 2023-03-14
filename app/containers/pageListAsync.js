@@ -2,6 +2,20 @@ import React from 'react';
 import Loading from 'enl-components/Loading';
 import loadable from '../utils/loadable';
 
+// consultant Pages
+export const ConsultantDashboard = loadable(() => import('./Pages/CunsultantDashboard/ConsultantDashboard'), {
+  fallback: <Loading />,
+});
+export const Ranking = loadable(() => import('./Pages/ConsultantRanking/Ranking'), {
+  fallback: <Loading />,
+});
+export const Employment = loadable(() => import('./Pages/ConsultantEmployment/Employment'), {
+  fallback: <Loading />,
+});
+export const Location = loadable(() => import('./Pages/consultantFaculty/Location'), {
+  fallback: <Loading />,
+});
+
 // students Pages
 export const StudentGender = loadable(() => import('./Pages/Students/StudentGender'), {
   fallback: <Loading />,
@@ -16,10 +30,21 @@ export const StudentUniversity = loadable(() => import('./Pages/StudentUniversit
   fallback: <Loading />,
 });
 
+// Student Course
+export const StudentCourse = loadable(() => import('./Pages/StudentCourse/StudentCourse'), {
+  fallback: <Loading />,
+});
+
+// Landing Page
+export const StudentInfo = loadable(() => import('./Pages/StudentInfo/StudentInfo'), {
+  fallback: <Loading />,
+});
+
 // Landing Page
 export const HomePage = loadable(() => import('./LandingPage/HomePage'), {
   fallback: <Loading />,
 });
+
 // Dashboard
 export const AnalyticDashboard = loadable(() => import('./Dashboard/AnalyticDashboard'), {
   fallback: <Loading />,

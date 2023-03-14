@@ -58,21 +58,22 @@ function LeftSidebarLayout(props) {
       <main className={classNames(classes.content, !sidebarOpen ? classes.contentPaddingLeft : '')} id="mainContent">
         <section className={classNames(classes.mainWrap, classes.sidebarLayout)}>
           {titleException.indexOf(history.location.pathname) < 0 && (
-            <div className={classes.pageTitle}>
-              <Typography component="h4" variant="h4">
-                {messages[place] !== undefined ? <FormattedMessage {...messages[place]} /> : place}
-              </Typography>
-              <BreadCrumb separator=" / " theme="light" location={history.location} />
-            </div>
+            <></>
+            // <div className={classes.pageTitle}>
+            //   <Typography component="h4" variant="h4">
+            //     {messages[place] !== undefined ? <FormattedMessage {...messages[place]} /> : place}
+            //   </Typography>
+            //   <BreadCrumb separator=" / " theme="light" location={history.location} />
+            // </div>
           )}
-          { !pageLoaded && (<img src="/images/spinner.gif" alt="spinner" className={classes.circularProgress} />) }
+          {!pageLoaded && (<img src="/images/spinner.gif" alt="spinner" className={classes.circularProgress} />)}
           <Fade
             in={pageLoaded}
             {...(pageLoaded ? { timeout: 700 } : {})}
           >
             <div className={!pageLoaded ? classes.hideApp : ''}>
               {/* Application content will load here */}
-              { children }
+              {children}
             </div>
           </Fade>
         </section>

@@ -26,6 +26,7 @@ import {
   createUserFailure,
   passwordForgetSuccess,
   passwordForgetFailure,
+  getRole,
 } from '../actions/authActions';
 import api from '../../api/baseUrl/BaseUrl';
 
@@ -42,16 +43,8 @@ function* loginSaga(provider) {
     const res = yield call(firebaseAuth.signInWithPopup, provider.payload.authProvider);
     if (res.statusCode === 200) {
       yield put(loginWithEmailSuccess(res));
-      yield history.push('/app');
+      yield history.push('/app/consultant/dashboard');
     }
-
-    // if (getUrlVars().next) {
-    //   // Redirect to next route
-    //   yield history.push(getUrlVars().next);
-    // } else {
-    //   // Redirect to dashboard if no next parameter
-    //   yield history.push('/app');
-    // }
   } catch (error) {
     yield put(loginFailure(error));
   }
@@ -62,27 +55,26 @@ function* loginWithEmailSaga(payload) {
     const res = yield api.post('/consultant/login',
       { email: payload.email, password: payload.password });
 
-    if (res.data.statusCode === 200) {
+    if (res.data.statusCode === 200 && res.data.body.role[0].Value === 'studentConsultant') {
+      console.log(res.data.body.role[0].Value, 'Sssss');
       yield put(loginWithEmailSuccess(res.data.body.message));
+      yield put(getRole(res.data.body.role[0].Value));
       localStorage.setItem('token', res?.data?.body?.token);
-      yield history.push('/app');
+      yield history.push('/app/consultant/dashboard');
     } else {
       const response = {
         message: res.data.message,
         status: res.data.status,
       };
-      console.log('data', res.data.body.message);
       yield put(loginWithEmailFailure(res.data.body.message));
     }
-    // if (res.data.statusCode === 400) {
-
-    // }
   } catch (error) {
     yield put(loginWithEmailFailure(error));
   }
 }
 
 function* registerWithEmailSaga(payload) {
+  console.log(payload, 'payload');
   try {
     const res = yield api.post('/consultant/register',
       { email: payload.email, password: payload.password });
@@ -97,13 +89,6 @@ function* registerWithEmailSaga(payload) {
     } else if (res.data.statusCode === 400 && res.data.body.message === 'User account already exists') {
       yield put(registerWithEmailFailure(res.data.body.message));
     }
-    // else if (res.data.statusCode === 400) {
-    //   console.log('res', res);
-    //
-    //   // Redirect to dashboard
-    //   // yield history.push('/register');
-    // } else if (res.statusCode === 400) {
-    //   yield put(registerWithEmailFailure(res.data.body.message));
     // }
   } catch (error) {
     yield put(registerWithEmailFailure(error));

@@ -32,7 +32,8 @@ function StudentSearch(props) {
     dataProduct,
     handleSwitchView,
     listView,
-    intl
+    intl,
+    placeholder
   } = props;
   const [anchorEl, setAnchorEl] = useState(null);
 
@@ -67,27 +68,27 @@ function StudentSearch(props) {
               <div className={classes.search}>
                 <SearchIcon />
               </div>
-              <input className={classes.input} placeholder={intl.formatMessage(messages.placeholder)} onChange={(event) => search(event)} />
+              <input className={classes.input} placeholder="Search University" onChange={(event) => search(event)} />
             </div>
           </div>
           <Typography variant="caption" className={classes.result}>
             {getTotalResult(dataProduct)}
-                        &nbsp;
+            &nbsp;
             <FormattedMessage {...messages.result} />
           </Typography>
 
           <div className={classes.fillterButton}>
             <Button color="primary" className={classes.button}>
-                            In DEMAOND
+              In DEMAOND
             </Button>
             <Button color="primary" className={classes.button}>
-                            TOP TIER
+              TOP TIER
             </Button>
             <Button color="primary" className={classes.button}>
-                            Science
+              Science
             </Button>
             <Button color="primary" className={classes.button}>
-                            Computer
+              Computer
             </Button>
 
           </div>
@@ -110,7 +111,7 @@ StudentSearch.propTypes = {
   dataProduct: PropTypes.array.isRequired,
   handleSwitchView: PropTypes.func.isRequired,
   listView: PropTypes.string.isRequired,
-  intl: PropTypes.object.isRequired
+  intl: PropTypes.object.isRequired,
 };
 
 export default withStyles(styles)(injectIntl(StudentSearch));

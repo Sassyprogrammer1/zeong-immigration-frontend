@@ -36,7 +36,13 @@ import {
   TrafficIndicator, StreetViewMap,
   NotFound,
   StudentGender,
-  StudentChart, StudentUniversity
+  StudentChart, StudentUniversity,
+  StudentCourse,
+  StudentInfo,
+  ConsultantDashboard,
+  Ranking,
+  Employment,
+  Location
 } from '../pageListAsync';
 
 function Application(props) {
@@ -46,6 +52,12 @@ function Application(props) {
   return (
     <Dashboard history={history} changeMode={changeMode}>
       <Switch>
+        {/* consultant Dashboard */}
+        <Route exact path="/app/consultant/dashboard" component={ConsultantDashboard} />
+        <Route exact path="/app/consultant/ranking" component={Ranking} />
+        <Route exact path="/app/consultant/employment" component={Employment} />
+        <Route exact path="/app/consultant/location" component={Location} />
+
         {/* Student */}
         <Route exact path="/app/dashboard/gender" component={StudentGender} />
         {/* Student chart */}
@@ -53,6 +65,12 @@ function Application(props) {
 
         {/* StudentUniversity */}
         <Route path="/app/dashboard/student-university" component={StudentUniversity} />
+
+        {/* StudentUniversity */}
+        <Route path="/app/dashboard/:universityId/student-course" component={StudentCourse} />
+
+        {/* student form */}
+        <Route path="/app/dashboard/student-info" component={StudentInfo} />
 
         { /* Home */}
         <Route exact path="/app" component={AnalyticDashboard} />

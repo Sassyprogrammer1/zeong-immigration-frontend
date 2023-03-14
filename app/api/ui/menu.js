@@ -31,6 +31,14 @@ module.exports = [
 
       },
       {
+        key: 'Student form',
+        name: 'Student Info',
+        link: '/app/dashboard/student-info',
+        icon: 'business',
+
+      },
+
+      {
         key: 'landing_page',
         name: 'Landing Page',
         title: true,
@@ -142,6 +150,22 @@ module.exports = [
       }
     ]
   },
+
+  {
+    key: 'Consultant',
+    name: 'Consultant',
+    icon: 'important_devices',
+    child: [
+
+      {
+        key: 'consultant',
+        name: 'Dashboard',
+        link: '/app/consultant/dashboard',
+
+      },
+    ]
+  },
+
   {
     key: 'apps',
     name: 'Applications',
